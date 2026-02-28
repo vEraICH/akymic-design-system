@@ -10,7 +10,7 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 |-----------------|---------|-------|
 | Token system    | stable  | See `tokens.md` |
 | Radius scale    | stable  | `--radius: 0.75rem` |
-| Typography scale | planned | Next iteration |
+| Typography scale | stable  | See `tokens.md#typography-tokens` |
 | Spacing scale   | planned | Next iteration |
 
 ---

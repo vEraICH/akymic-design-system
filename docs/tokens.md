@@ -142,6 +142,89 @@ Base border radius. Use as `border-radius: var(--radius)`. Scale for sub-compone
 
 ---
 
+## Typography Tokens
+
+Typography tokens are mode-agnostic — no light/dark split needed. They live in `:root {}` only.
+
+### Font Families
+
+| Token | CSS Variable | Value |
+|-------|-------------|-------|
+| `fontFamily.sans` | `--font-sans` | `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif` |
+| `fontFamily.mono` | `--font-mono` | `ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace` |
+
+Use `--font-sans` for all UI text. Use `--font-mono` for code, tokens, keyboard shortcuts, and technical labels.
+
+---
+
+### Font Size Scale
+
+| Token | CSS Variable | rem | px | Role |
+|-------|------------|-----|-----|------|
+| `fontSize.xs` | `--text-xs` | `0.75rem` | 12px | Labels, badges, overlines |
+| `fontSize.sm` | `--text-sm` | `0.875rem` | 14px | Body / UI default |
+| `fontSize.base` | `--text-base` | `1rem` | 16px | Comfortable reading body |
+| `fontSize.lg` | `--text-lg` | `1.125rem` | 18px | Card titles, section leads |
+| `fontSize.xl` | `--text-xl` | `1.25rem` | 20px | Page section headings |
+| `fontSize.2xl` | `--text-2xl` | `1.5rem` | 24px | Dialog titles, hero sub |
+| `fontSize.3xl` | `--text-3xl` | `1.875rem` | 30px | Page hero heading |
+| `fontSize.4xl` | `--text-4xl` | `2.25rem` | 36px | Display / marketing |
+
+Usage: `font-size: var(--text-sm)`. Do not wrap with `hsl()` — these are length values, not HSL components.
+
+---
+
+### Font Weight
+
+| Token | CSS Variable | Value | Use |
+|-------|-------------|-------|-----|
+| `fontWeight.normal` | `--font-normal` | `400` | Body text |
+| `fontWeight.medium` | `--font-medium` | `500` | Emphasis, interactive labels |
+| `fontWeight.semibold` | `--font-semibold` | `600` | Headings, strong labels |
+| `fontWeight.bold` | `--font-bold` | `700` | Display, marketing, hero text |
+
+Usage: `font-weight: var(--font-semibold)`.
+
+---
+
+### Line Height
+
+| Token | CSS Variable | Value | Use |
+|-------|------------|-------|-----|
+| `lineHeight.tight` | `--leading-tight` | `1.25` | Large display text, headings |
+| `lineHeight.snug` | `--leading-snug` | `1.375` | Card titles, compact UI |
+| `lineHeight.normal` | `--leading-normal` | `1.5` | Body / UI default |
+| `lineHeight.relaxed` | `--leading-relaxed` | `1.625` | Long-form reading, help text |
+
+Usage: `line-height: var(--leading-normal)`.
+
+---
+
+### Letter Spacing
+
+| Token | CSS Variable | Value | Use |
+|-------|------------|-------|-----|
+| `letterSpacing.tight` | `--tracking-tight` | `-0.025em` | Large display headlines |
+| `letterSpacing.normal` | `--tracking-normal` | `0em` | Body / UI default |
+| `letterSpacing.wide` | `--tracking-wide` | `0.05em` | Small caps, overlines |
+| `letterSpacing.widest` | `--tracking-widest` | `0.1em` | All-caps labels, badges |
+
+Usage: `letter-spacing: var(--tracking-wide)`.
+
+---
+
+### Typography Do / Don't
+
+| Do | Don't |
+|----|-------|
+| `font-size: var(--text-sm)` | `font-size: 14px` |
+| `font-family: var(--font-mono)` for code | `font-family: monospace` directly |
+| `font-weight: var(--font-semibold)` for headings | `font-weight: 600` hardcoded |
+| Pair `--text-3xl` with `--leading-tight` for hero | Use `--leading-relaxed` on large display text |
+| Use `--text-xs` minimum; avoid smaller sizes | Go below 12px (0.75rem) |
+
+---
+
 ## Do / Don't
 
 | Do | Don't |
