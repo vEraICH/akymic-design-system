@@ -99,7 +99,7 @@ Use for hover states on menu items, subtle highlights. Visually identical to `--
 
 Use for error states, destructive actions (delete buttons, error banners).
 
-**Known risk (dark mode):** `--destructive` dark (`0 62.8% 30.6%`) is a very dark red. It works correctly as a button background (white foreground on top), but is insufficient contrast (~2.5:1) if used as inline text color on dark backgrounds. **Do not use `--destructive` as a text color on dark surfaces** — use `--destructive-foreground` or a dedicated error text token (future iteration).
+**Dark mode:** `--destructive` dark is now `0 84.2% 60.2%` — same as light mode. Bright red, readable as error text, error border, and destructive button background on dark surfaces.
 
 ---
 
