@@ -43,8 +43,9 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 
 | Component      | Status  | Notes |
 |---------------|---------|-------|
-| Topbar        | planned | App shell header |
-| Sidebar       | planned | Collapsible nav |
+| Topbar        | stable  | 60px header — title, search, bell, theme toggle, avatar |
+| Sidebar       | stable  | 240px — logo, 2 nav sections, user footer, active state via `usePathname` |
+| AppShell      | stable  | Opt-in layout wrapper (server component) combining Topbar + Sidebar |
 | Breadcrumb    | planned | — |
 | Tabs          | planned | — |
 
@@ -84,11 +85,11 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 ## Generation Order
 
 Per CLAUDE.md roadmap:
-1. Foundations (tokens, radius, type scale) — **current iteration**
-2. Buttons
-3. Inputs (text, textarea, select) + validation
-4. Navigation shell
-5. Cards + sections + dividers
+1. Foundations (tokens, radius, type scale) — **stable**
+2. Buttons — **stable**
+3. Inputs (text, textarea, select) + validation — **stable**
+4. Navigation shell — **stable** (2026-03-01)
+5. Cards + sections + dividers — **current iteration**
 6. Tables + filters + pagination
 7. Dialogs + drawers
 8. Toast/alerts + empty/loading states
