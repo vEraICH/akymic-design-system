@@ -71,9 +71,9 @@
 
 | Task | Status | Notes | Change Note |
 |------|--------|-------|-------------|
-| Table — columns, row stripes, sorting affordance | not-started | `--muted` stripes; `--border` lines | — |
-| Pagination | not-started | Pairs with Table | — |
-| Filter bar — search input + badge chips | not-started | Pairs with Table | — |
+| Table — columns, row stripes, sorting affordance | completed | `ui/table.tsx`; composable primitives + striped + sortable | [2026-03-02-table-pagination-filterbar](docs/changes/2026-03-02-table-pagination-filterbar.md) |
+| Pagination | completed | `ui/pagination.tsx`; 7-slot range, ellipsis, ARIA | [2026-03-02-table-pagination-filterbar](docs/changes/2026-03-02-table-pagination-filterbar.md) |
+| Filter bar — search input + badge chips | completed | `ui/filter-bar.tsx`; controlled, chip × removal | [2026-03-02-table-pagination-filterbar](docs/changes/2026-03-02-table-pagination-filterbar.md) |
 
 ---
 
@@ -98,7 +98,8 @@
 | Paper playground — Button + Input showcase | completed | `app/paper-playground/page.tsx` | — |
 | Paper playground — Badge + Divider + Card showcase | completed | Added 2026-03-02 | [2026-03-02-cards-dividers-badges](docs/changes/2026-03-02-cards-dividers-badges.md) |
 | DS Showcase link on dashboard | completed | Card + link from index → `/paper-playground` | — |
-| Table + Pagination demo page | not-started | Pairs with Table component work | — |
+| Paper playground — Table + Pagination + FilterBar showcase | completed | Added to `/paper-playground`; interactive + striped demo | [2026-03-02-table-pagination-filterbar](docs/changes/2026-03-02-table-pagination-filterbar.md) |
+| Table + Pagination demo page | not-started | Standalone page with full CRUD-style table | — |
 | Forms demo page | not-started | Textarea, Select, Checkbox, Radio, Switch | — |
 
 ---
