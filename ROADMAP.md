@@ -130,10 +130,11 @@
 
 | Task | Status | Notes | Change Note |
 |------|--------|-------|-------------|
-| Site scaffold — Next.js static export, routing, token import, light/dark toggle | not-started | `apps/docs/`; reuses tokens.css from `packages/tokens/` | — |
-| Foundations — Color page: token palette browser (light + dark swatches, HSL values, Tailwind class) | not-started | One row per token; both modes side by side | — |
-| Foundations — Typography page: type scale specimen, weight + leading examples | not-started | Mirror the existing Paper "Type Scale Specimen" artboard | — |
+| Site scaffold — Next.js static export, routing, token import, light/dark toggle | completed | `apps/docs/`; DocLayout sidebar + topbar; 4 pages live | — |
+| Foundations — Color page: token palette browser (light + dark swatches, HSL values, Tailwind class) | completed | All 19 tokens grouped by role; both swatches always visible | — |
+| Foundations — Typography page: type scale specimen, weight + leading examples | completed | Size scale, weight scale, leading table, font family preview | — |
 | Foundations — Spacing + Radius page | not-started | Visual scale with pixel values | — |
+| Components — Overview page: all components with status table | completed | Stable / planned / not-started counts; full inventory table | — |
 | Components — Button gallery: all variants, sizes, states | not-started | Live rendered + code snippet per variant | — |
 | Components — Input gallery: states + form group example | not-started | — | — |
 | Components — Card gallery: standard, stat, list, interactive patterns | not-started | — | — |
