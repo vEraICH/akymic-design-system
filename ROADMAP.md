@@ -1,138 +1,136 @@
 # Akymic Design System — Roadmap
 
-> Living document. Status is updated after each iteration.
-> To adjust: edit rows, add rows, or change the Status column.
+> Living document. Edit rows, add rows, or change the Status column directly.
+> Completed tasks link to their change note in `docs/changes/`.
 >
-> **Status values:** `done` · `next` · `planned` · `deferred` · `in-progress`
+> **Status values:** `not-started` · `in-progress` · `completed` · `deferred` · `failed`
 
 ---
 
 ## Foundations
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Color token system — 14 semantic roles (light + dark) | done | `tokens.json` + `tokens.css` |
-| Radius token (`--radius: 0.75rem`) | done | Part of token baseline |
-| `--muted-foreground` light contrast fix (46.9% → 40% L) | done | WCAG AA compliance |
-| `--destructive` dark contrast fix (30.6% → 60.2% L) | done | Readable on dark bg |
-| Typography scale — 19 vars (size, weight, leading, tracking, family) | done | `--text-*`, `--font-*`, `--leading-*`, `--tracking-*` |
-| Spacing scale token | planned | `--space-*` vars mirroring Tailwind scale |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Color token system — 14 semantic roles (light + dark) | completed | 19 color vars in `tokens.json` + `tokens.css` | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| Radius token (`--radius: 0.75rem`) | completed | Part of token baseline | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `--muted-foreground` light contrast fix (46.9% → 40% L) | completed | WCAG AA compliance | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `--destructive` dark contrast fix (30.6% → 60.2% L) | completed | Readable as error text on dark bg | [2026-02-28-fix-dark-destructive](docs/changes/2026-02-28-fix-dark-destructive.md) |
+| Typography scale — 19 vars (size, weight, leading, tracking, family) | completed | `--text-*`, `--font-*`, `--leading-*`, `--tracking-*` | [2026-02-28-typography-scale](docs/changes/2026-02-28-typography-scale.md) |
+| Spacing scale token | not-started | `--space-*` vars mirroring Tailwind scale | — |
 
 ---
 
 ## Components — Interactive
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Button — 5 variants × 3 sizes × 5 states | done | `ui/button.tsx` |
-| Input — default + error state | done | `ui/input.tsx` |
-| Textarea — default + error | planned | Mirrors Input API; `error` prop |
-| Select — default + error | planned | Native `<select>` wrapper first |
-| Checkbox | planned | — |
-| Radio | planned | — |
-| Switch | planned | — |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Button — 5 variants × 3 sizes × 5 states | completed | `ui/button.tsx`; shipped in initial app-template setup | — |
+| Input — default + error state | completed | `ui/input.tsx`; shipped in initial app-template setup | — |
+| Textarea — default + error | not-started | Mirror Input API; `error` prop | — |
+| Select — default + error | not-started | Native `<select>` wrapper first | — |
+| Checkbox | not-started | — | — |
+| Radio | not-started | — | — |
+| Switch | not-started | — | — |
 
 ---
 
 ## Components — Layout & Containment
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Card — CardHeader, CardTitle, CardDescription, CardContent, CardFooter | done | `ui/card.tsx` |
-| Badge — 4 variants × 2 sizes | done | `ui/badge.tsx` |
-| Divider — horizontal (plain + labeled), vertical | done | `ui/divider.tsx` |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Card — CardHeader, CardTitle, CardDescription, CardContent, CardFooter | completed | `ui/card.tsx` | [2026-03-02-cards-dividers-badges](docs/changes/2026-03-02-cards-dividers-badges.md) |
+| Badge — 4 variants × 2 sizes | completed | `ui/badge.tsx` | [2026-03-02-cards-dividers-badges](docs/changes/2026-03-02-cards-dividers-badges.md) |
+| Divider — horizontal (plain + labeled), vertical | completed | `ui/divider.tsx` | [2026-03-02-cards-dividers-badges](docs/changes/2026-03-02-cards-dividers-badges.md) |
 
 ---
 
 ## Components — Navigation
 
-| Task | Status | Notes |
-|------|--------|-------|
-| AppShell — server-safe layout wrapper | done | `components/app-shell.tsx` |
-| NavSidebar — 240px, 2 sections, active state | done | `ui/nav-sidebar.tsx` |
-| Topbar — title, icons, theme toggle, avatar | done | `ui/topbar.tsx` |
-| Breadcrumb | planned | — |
-| Tabs | planned | — |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| AppShell — server-safe layout wrapper | completed | `components/app-shell.tsx` | [2026-03-01-navigation-shell](docs/changes/2026-03-01-navigation-shell.md) |
+| NavSidebar — 240px, 2 sections, active state via `usePathname` | completed | `ui/nav-sidebar.tsx` | [2026-03-01-navigation-shell](docs/changes/2026-03-01-navigation-shell.md) |
+| Topbar — title, icons, theme toggle, avatar | completed | `ui/topbar.tsx` | [2026-03-01-navigation-shell](docs/changes/2026-03-01-navigation-shell.md) |
+| Breadcrumb | not-started | — | — |
+| Tabs | not-started | — | — |
 
 ---
 
 ## Components — Overlay
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Dialog | planned | Focus trap; `--popover` + `--ring` |
-| Drawer | planned | Side-anchored dialog |
-| Tooltip | planned | `--popover`; hover-triggered |
-| Dropdown menu | planned | `--popover` + `--accent` hover |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Dialog | not-started | Focus trap; uses `--popover` + `--ring` | — |
+| Drawer | not-started | Side-anchored dialog variant | — |
+| Tooltip | not-started | Hover-triggered; uses `--popover` | — |
+| Dropdown menu | not-started | Uses `--popover` + `--accent` for hover | — |
 
 ---
 
 ## Components — Data Display
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Table — sortable columns, row stripes | next | `--muted` stripes; `--border` lines |
-| Pagination | next | Pairs with Table |
-| Filter bar | next | Search input + badge filters |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Table — columns, row stripes, sorting affordance | not-started | `--muted` stripes; `--border` lines | — |
+| Pagination | not-started | Pairs with Table | — |
+| Filter bar — search input + badge chips | not-started | Pairs with Table | — |
 
 ---
 
 ## Components — Feedback
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Alert — info, warning, error, success | planned | Inline; no JS dependency |
-| Toast — info, warning, error, success | planned | Requires state; consider `sonner` |
-| Empty state | planned | Illustration slot + action |
-| Skeleton / Loading | planned | Pulse animation; mirrors real layouts |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Alert — info, warning, error, success | not-started | Inline; no JS dependency | — |
+| Toast — info, warning, error, success | not-started | Requires state; evaluate `sonner` | — |
+| Empty state | not-started | Illustration slot + CTA action | — |
+| Skeleton / Loading | not-started | Pulse animation; mirrors real layouts | — |
 
 ---
 
 ## App Template
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Initial Next.js 15 + Tailwind + next-themes setup | done | `akymic-app-template` |
-| Token sync from DS repo | done | `scripts/sync-tokens.sh` + `.ps1` |
-| Dashboard page with AppShell | done | `app/page.tsx` |
-| DS Showcase link on dashboard | done | Links to `/paper-playground` |
-| Paper playground — Button + Input showcase | done | `app/paper-playground/page.tsx` |
-| Paper playground — Badge + Divider + Card showcase | done | Added 2026-03-02 |
-| AGENT.md — agent-native guide for app development | done | Root of `akymic-app-template` |
-| Table + Pagination demo page | planned | Pairs with component work |
-| Forms demo page (all input types + validation) | planned | Textarea, Select, Checkbox, etc. |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Next.js 15 + Tailwind + next-themes setup | completed | Initial `akymic-app-template` repo | — |
+| Token sync script | completed | `scripts/sync-tokens.sh` + `.ps1` | — |
+| Dashboard page with AppShell | completed | `app/page.tsx` — greeting, stats, activity | [2026-03-01-navigation-shell](docs/changes/2026-03-01-navigation-shell.md) |
+| Paper playground — Button + Input showcase | completed | `app/paper-playground/page.tsx` | — |
+| Paper playground — Badge + Divider + Card showcase | completed | Added 2026-03-02 | [2026-03-02-cards-dividers-badges](docs/changes/2026-03-02-cards-dividers-badges.md) |
+| DS Showcase link on dashboard | completed | Card + link from index → `/paper-playground` | — |
+| Table + Pagination demo page | not-started | Pairs with Table component work | — |
+| Forms demo page | not-started | Textarea, Select, Checkbox, Radio, Switch | — |
 
 ---
 
 ## Paper Artboards (Design Specs)
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Type Scale Specimen (light) | done | Existing in Paper file |
-| Button Component — Light | done | Existing in Paper file |
-| Button Component — Dark | done | Existing in Paper file |
-| Input Component — Light | done | Existing in Paper file |
-| Input Component — Dark | done | Existing in Paper file |
-| Navigation Shell — Light | deferred | MCP weekly limit; resets ~2026-03-07 |
-| Navigation Shell — Dark | deferred | MCP weekly limit; resets ~2026-03-07 |
-| Cards + Dividers + Badges — Light | planned | After MCP limit resets |
-| Cards + Dividers + Badges — Dark | planned | After MCP limit resets |
-| Table Component — Light | planned | After Table code is done |
-| Table Component — Dark | planned | After Table code is done |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Type Scale Specimen (light) | completed | Existing in Paper file | — |
+| Button Component — Light | completed | Existing in Paper file | — |
+| Button Component — Dark | completed | Existing in Paper file | — |
+| Input Component — Light | completed | Existing in Paper file | — |
+| Input Component — Dark | completed | Existing in Paper file | — |
+| Navigation Shell — Light | deferred | Paper MCP weekly limit; retry ~2026-03-07 | — |
+| Navigation Shell — Dark | deferred | Paper MCP weekly limit; retry ~2026-03-07 | — |
+| Cards + Dividers + Badges — Light | not-started | After MCP limit resets | — |
+| Cards + Dividers + Badges — Dark | not-started | After MCP limit resets | — |
+| Table Component — Light | not-started | After Table code ships | — |
+| Table Component — Dark | not-started | After Table code ships | — |
 
 ---
 
 ## Governance & DX
 
-| Task | Status | Notes |
-|------|--------|-------|
-| `docs/tokens.md` — token dictionary | done | Full reference with do/don't |
-| `docs/components.md` — component inventory | done | Auto-updated each iteration |
-| `docs/paper-workflow.md` — Paper → code → token workflow | done | — |
-| `docs/migrations.md` — deprecation log | done | Empty; ready for first entry |
-| `docs/changes/` — per-iteration change notes | done | 4 notes filed so far |
-| `AGENT.md` (DS repo) — agent-native DS contract | done | Token format, workflow, quality gates |
-| `AGENT.md` (app-template) — agent-native build guide | done | Component APIs, patterns, rules |
-| `ROADMAP.md` — this file | done | — |
-| Automated token validation (CI lint) | planned | Check HSL format, required light+dark |
-| Storybook or alternative component explorer | planned | Evaluate: Storybook vs Histoire vs custom |
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| `docs/tokens.md` — token dictionary | completed | Full reference with do/don't | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `docs/components.md` — component inventory | completed | Updated each iteration | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `docs/paper-workflow.md` — Paper → code → token workflow | completed | — | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `docs/migrations.md` — deprecation log | completed | Empty; ready for first entry | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
+| `docs/changes/` — per-iteration change notes | completed | 5 notes filed | — |
+| `AGENT.md` (DS repo) — agent-native DS contract | completed | Token format, workflow, quality gates | — |
+| `AGENT.md` (app-template) — agent-native build guide | completed | Component APIs, patterns, hard rules | — |
+| Automated token validation (CI lint) | not-started | Check HSL format, required light+dark | — |
+| Storybook or alternative component explorer | not-started | Evaluate: Storybook vs Histoire vs custom | — |
