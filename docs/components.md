@@ -33,9 +33,9 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 
 | Component  | Status  | Variants | Notes |
 |-----------|---------|----------|-------|
-| Card      | planned | default, interactive | Uses `--card`, `--card-foreground` |
-| Divider   | planned | horizontal, vertical | Uses `--border` |
-| Badge     | planned | default, secondary, destructive, outline | — |
+| Card      | stable  | default, interactive (via className) | CardHeader, CardTitle, CardDescription, CardContent, CardFooter |
+| Divider   | stable  | horizontal (plain + labeled), vertical | Uses `--border` |
+| Badge     | stable  | default, secondary, destructive, outline | sizes: sm, default |
 
 ---
 
@@ -89,7 +89,8 @@ Per CLAUDE.md roadmap:
 2. Buttons — **stable**
 3. Inputs (text, textarea, select) + validation — **stable**
 4. Navigation shell — **stable** (2026-03-01)
-5. Cards + sections + dividers — **current iteration**
+5. Cards + dividers + badges — **stable** (2026-03-02)
+6. Tables + filters + pagination — **next**
 6. Tables + filters + pagination
 7. Dialogs + drawers
 8. Toast/alerts + empty/loading states
