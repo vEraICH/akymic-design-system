@@ -26,7 +26,7 @@
 |---------|------|--------|-------|-------------|
 | AKYD-007 | Button — 5 variants × 3 sizes × 5 states | completed | `ui/button.tsx`; shipped in initial app-template setup | — |
 | AKYD-008 | Input — default + error state | completed | `ui/input.tsx`; shipped in initial app-template setup | — |
-| AKYD-009 | Textarea — default + error | not-started | Mirror Input API; `error` prop | — |
+| AKYD-009 | Textarea — default + error | completed | `ui/textarea.tsx`; mirrors Input API exactly | — |
 | AKYD-010 | Select — default + error | not-started | Native `<select>` wrapper first | — |
 | AKYD-011 | Checkbox | not-started | — | — |
 | AKYD-012 | Radio | not-started | — | — |
