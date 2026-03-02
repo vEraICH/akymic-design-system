@@ -121,6 +121,31 @@
 
 ---
 
+## Documentation Site (`apps/docs/`)
+
+> A static public-facing site — the designer communication tool.
+> Reference: [primer.style/product](https://primer.style/product/)
+> Lives in this repo at `apps/docs/`. Stack: Next.js + static export (`output: 'export'`), deployable to GitHub Pages or Vercel.
+> Audience: human designers. Distinct from `akymic-app-template` (which is for developers + agents).
+
+| Task | Status | Notes | Change Note |
+|------|--------|-------|-------------|
+| Site scaffold — Next.js static export, routing, token import, light/dark toggle | not-started | `apps/docs/`; reuses tokens.css from `packages/tokens/` | — |
+| Foundations — Color page: token palette browser (light + dark swatches, HSL values, Tailwind class) | not-started | One row per token; both modes side by side | — |
+| Foundations — Typography page: type scale specimen, weight + leading examples | not-started | Mirror the existing Paper "Type Scale Specimen" artboard | — |
+| Foundations — Spacing + Radius page | not-started | Visual scale with pixel values | — |
+| Components — Button gallery: all variants, sizes, states | not-started | Live rendered + code snippet per variant | — |
+| Components — Input gallery: states + form group example | not-started | — | — |
+| Components — Card gallery: standard, stat, list, interactive patterns | not-started | — | — |
+| Components — Badge + Divider gallery | not-started | — | — |
+| Components — Navigation Shell gallery (AppShell screenshot / embed) | not-started | — | — |
+| Components — Table, Pagination, Filter bar gallery | not-started | Depends on Table component shipping | — |
+| Components — Overlay gallery (Dialog, Drawer, Tooltip, Dropdown) | not-started | Depends on Overlay components shipping | — |
+| Components — Feedback gallery (Alert, Toast, Empty state, Skeleton) | not-started | Depends on Feedback components shipping | — |
+| Deploy — GitHub Pages or Vercel static hosting | not-started | Set up CI to publish on push to `main` | — |
+
+---
+
 ## Governance & DX
 
 | Task | Status | Notes | Change Note |
