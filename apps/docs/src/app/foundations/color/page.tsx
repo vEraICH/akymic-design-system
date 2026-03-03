@@ -36,6 +36,20 @@ const TOKENS = [
     ],
   },
   {
+    group: "Success",
+    tokens: [
+      { name: "--success",            tailwind: "bg-success",            light: "142 76% 36%", dark: "142 72% 52%", usage: "Confirmations, completed states, positive feedback" },
+      { name: "--success-foreground", tailwind: "text-success-foreground", light: "0 0% 98%",   dark: "0 0% 98%",   usage: "Text/icon on success background" },
+    ],
+  },
+  {
+    group: "Warning",
+    tokens: [
+      { name: "--warning",            tailwind: "bg-warning",            light: "43 96% 37%",  dark: "43 96% 56%",  usage: "Caution, advisory, non-critical issues" },
+      { name: "--warning-foreground", tailwind: "text-warning-foreground", light: "0 0% 98%",   dark: "38 90% 10%",  usage: "Text/icon on warning background" },
+    ],
+  },
+  {
     group: "Destructive",
     tokens: [
       { name: "--destructive",            tailwind: "bg-destructive",            light: "0 84.2% 60.2%", dark: "0 84.2% 60.2%", usage: "Errors, delete actions, danger states" },
