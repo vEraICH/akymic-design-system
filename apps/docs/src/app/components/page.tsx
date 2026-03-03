@@ -39,8 +39,8 @@ const COMPONENTS: { name: string; status: Status; variants: string; notes: strin
   // Planned
   { name: "Tooltip",      status: "stable",      variants: "top, bottom, left, right",                                   notes: "hover+focus · delay prop · aria-describedby · portal" },
   { name: "Dropdown",     status: "stable",      variants: "default, with labels, with disabled items",                    notes: "role=menu · arrow-key nav · DropdownItem/Separator/Label · portal" },
-  { name: "Breadcrumb",   status: "planned",     variants: "—",                                                             notes: "—" },
-  { name: "Tabs",         status: "planned",     variants: "—",                                                             notes: "—" },
+  { name: "Tabs",         status: "stable",      variants: "line, pill",                                                   notes: "Roving tabindex · arrow-key nav · TabsList/Trigger/Content · controlled+uncontrolled" },
+  { name: "Breadcrumb",   status: "stable",      variants: "basic, with ellipsis, custom separator",                      notes: "BreadcrumbList convenience API · aria-current=page · BreadcrumbEllipsis" },
 ];
 
 const STATUS_STYLES: Record<Status, string> = {
