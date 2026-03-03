@@ -29,10 +29,21 @@ packages/
 │       └── tokens.css           ← Consumer artifact. Derive from tokens.json.
 └── ui/
     └── src/
-        └── README.md            ← Shared promoted components (future; currently minimal)
+        ├── index.ts             ← Barrel export for all @akymic/ui components
+        ├── badge.tsx            ← Badge (6 variants × 2 sizes)
+        ├── skeleton.tsx         ← Skeleton + Spinner
+        ├── empty-state.tsx      ← EmptyState
+        ├── dashboard-layout.tsx ← DashboardLayout — 12-col CSS Grid container
+        ├── dashboard-panel.tsx  ← DashboardPanel — panel primitive (compound)
+        ├── dashboard-skeleton.tsx ← DashboardSkeleton — loading placeholder
+        ├── checkbox.tsx · radio.tsx · switch.tsx
+        ├── tabs.tsx · breadcrumb.tsx
+        ├── tooltip.tsx · dropdown.tsx
+        └── lib/utils.ts         ← cn() utility
 docs/
 ├── tokens.md                    ← Token dictionary (human + agent reference)
 ├── components.md                ← Component inventory + status
+├── compound-elements.md         ← Compound element specs + Phase 2 roadmap
 ├── paper-workflow.md            ← Paper → code → token workflow
 ├── migrations.md                ← Deprecations and renames
 └── changes/
@@ -204,38 +215,58 @@ Copy `packages/tokens/tokens/tokens.css` to `akymic-app-template/src/design-syst
 
 ## 7. Component Inventory & Status
 
+### Foundations & tokens
 | Component | Status | Notes |
 |---|---|---|
-| Token system | stable | 19 color + 19 typography vars |
-| Radius | stable | `0.75rem` |
-| Typography scale | stable | 8 sizes, 4 weights, 4 leading, 4 tracking, 2 families |
-| **Button** | stable | 5 variants × 3 sizes × 5 states |
-| **Input** | stable | default + error state |
-| **Card** | stable | CardHeader, CardTitle, CardDescription, CardContent |
-| **NavSidebar** | stable | 240px, muted bg, active via usePathname |
-| **Topbar** | stable | 60px, search + bell + ThemeToggle + avatar |
-| **AppShell** | stable | Server component layout wrapper |
-| Textarea | planned | — |
-| Select | planned | — |
-| Checkbox / Radio / Switch | planned | — |
-| Badge | planned | — |
-| Divider | planned | — |
-| Breadcrumb | planned | — |
-| Tabs | planned | — |
-| Dialog / Drawer | planned | — |
-| Alert / Toast | planned | — |
-| Table + Pagination | planned | — |
-| Empty state / Skeleton | planned | — |
+| Token system | stable | 23 semantic tokens — 18 color roles + radius + success/warning (2026-03-02) |
+| Shadow tokens | stable | `--shadow-resting` / `--shadow-floating` / `--shadow-inset` (2026-03-02) |
+| Typography scale | stable | 19 mode-agnostic vars in `:root` only |
 
-**Generation order** (what to build next):
-1. ~~Foundations~~ — done
-2. ~~Buttons~~ — done
-3. ~~Inputs~~ — done
-4. ~~Navigation shell~~ — done
-5. **Cards + dividers** ← next
-6. Tables + pagination
-7. Dialogs + drawers
-8. Toast/alerts + empty/loading states
+### Primitives (in `akymic-app-template/src/components/ui/`)
+| Component | Status | Notes |
+|---|---|---|
+| Button | stable | 5 variants × 3 sizes × 5 states |
+| Input / Textarea | stable | error + disabled states; `aria-invalid` wired |
+| Card / Divider | stable | CardHeader/Title/Description/Content/Footer |
+| Badge | stable | 6 variants × 2 sizes; also promoted to `packages/ui` |
+| Alert | stable | 5 variants; optional dismiss |
+| Toast | stable | Imperative API; auto-dismiss 4s; max 5 stacked |
+| Skeleton / Spinner | stable | animate-pulse + spinner 3 sizes; also in `packages/ui` |
+| EmptyState | stable | icon + title + description + action; also in `packages/ui` |
+| Dialog / Drawer | stable | Focus trap, body scroll lock, portal, return focus |
+| Tooltip | stable | Portal, viewport-aware flip, `aria-describedby`; also in `packages/ui` |
+| Dropdown | stable | `role=menu`, arrow-key nav, portal; also in `packages/ui` |
+| Select / Combobox | stable | Popover-based, ARIA combobox, keyboard nav |
+| MultiSelect | stable | Tag chips, maxDisplay overflow, clear-all |
+| DatePicker | stable | CalendarMiniMonth in popover, clearable |
+| FileUpload | stable | Drag-and-drop, maxSize, maxFiles, dedup |
+| Checkbox / Radio / Switch | stable | Accessible, roving tabindex on RadioGroup; also in `packages/ui` |
+| Tabs / Breadcrumb | stable | Roving tabindex, arrow-key nav; also in `packages/ui` |
+| Table + Pagination | stable | Sortable headers (`aria-sort`), striped rows, FilterBar |
+| Calendar | stable | Zero deps, event chips, arrow-key nav, `role=grid` |
+| NavSidebar / Topbar / AppShell | stable | 240px sidebar + 60px topbar + server-compatible wrapper |
+
+### Compound elements (in `packages/ui/src/` + `akymic-app-template/src/components/ui/`)
+| Component | Status | Notes |
+|---|---|---|
+| DashboardLayout | stable | 12-col CSS Grid, responsive collapse, loading→DashboardSkeleton |
+| DashboardPanel | stable | `<section>` landmark, header anatomy (icon/title/badge/info/actions), colSpan/rowSpan |
+| DashboardSkeleton | stable | Grid-matched loading placeholder |
+
+See `docs/compound-elements.md` for full spec and Phase 2 roadmap (drag-to-reorder, resize handles, DataSection, FormSection, PageHeader).
+
+**Generation order (completed):**
+1. ~~Foundations~~ (tokens, radius, typography)
+2. ~~Buttons~~
+3. ~~Inputs + validation~~
+4. ~~Navigation shell~~
+5. ~~Cards + dividers + badges~~
+6. ~~Tables + pagination~~
+7. ~~Dialogs + drawers~~
+8. ~~Toast / alerts / empty / loading~~
+9. ~~Success + warning tokens~~
+10. ~~Checkbox, Radio, Switch, Tabs, Breadcrumb, Tooltip, Dropdown~~
+11. ~~Compound elements — DashboardLayout + DashboardPanel + DashboardSkeleton~~
 
 ---
 
@@ -279,6 +310,7 @@ Before completing any iteration, verify:
 - [ ] `tokens.json` and `tokens.css` are in sync
 - [ ] Change note created in `docs/changes/`
 - [ ] `docs/components.md` status updated if a component changed
+- [ ] If adding a compound element: `docs/compound-elements.md` updated; `packages/ui/src/` and `akymic-app-template/src/components/ui/` both updated
 
 ---
 
