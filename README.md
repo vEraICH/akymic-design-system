@@ -1,6 +1,6 @@
 # Akymic Design System
 
-A complete, production-ready design system for Next.js + Tailwind CSS + TypeScript applications. 31 components, 23 semantic tokens, full light/dark mode, zero runtime dependencies beyond React.
+A complete, production-ready design system for Next.js + Tailwind CSS + TypeScript applications. 34 components, 23 semantic tokens, full light/dark mode, zero runtime dependencies beyond React.
 
 **Docs site:** `apps/docs/` — run `npm run dev` from that directory → `http://localhost:3001`
 **App template:** `akymic-app-template/` — full working Next.js app with all components wired up
@@ -140,7 +140,7 @@ boxShadow: {
 
 ## Component Inventory
 
-All 31 components are in `akymic-app-template/src/components/ui/`. Every component:
+All 34 components are in `akymic-app-template/src/components/ui/` (primitives) and `packages/ui/src/` (compound elements + promoted primitives). Every component:
 - Uses only semantic tokens
 - Has visible focus rings
 - Supports light + dark mode
@@ -321,6 +321,70 @@ import { BreadcrumbList } from "@/components/ui/breadcrumb";
 ]} />
 ```
 
+### Compound Elements: DashboardLayout, DashboardPanel, DashboardSkeleton
+
+Higher-order components that compose Card, Badge, Tooltip, DropdownMenu, Skeleton, and EmptyState into a complete, responsive dashboard grid. Loading states, empty states, and accessibility are built in.
+
+```tsx
+import { DashboardLayout }   from "@/components/ui/dashboard-layout";
+import { DashboardPanel }    from "@/components/ui/dashboard-panel";
+import { DashboardSkeleton } from "@/components/ui/dashboard-skeleton";
+
+// Full dashboard — loading=true renders DashboardSkeleton automatically
+<DashboardLayout
+  title="Engineering Overview"
+  description="Last 30 days · All repositories"
+  columns={12}          // 4 | 6 | 8 | 12
+  gap="md"              // "sm" | "md" | "lg"
+  loading={isLoading}
+  skeletonCount={7}
+  headerActions={<Button onClick={refresh}>Refresh</Button>}
+>
+  {/* colSpan/rowSpan use CSS Grid inline styles — safe from Tailwind purge */}
+  <DashboardPanel colSpan={3} title="Open pull requests">
+    <Stat value="42" delta="+5 this week" />
+  </DashboardPanel>
+
+  <DashboardPanel
+    colSpan={3}
+    title="Average merge time"
+    subtitle="Median · excluding drafts"
+    badge={{ label: "Beta", variant: "secondary" }}
+    info="Median time from PR open to first merge commit."
+    actions={[
+      { label: "Download CSV", onSelect: handleDownload },
+      { label: "Remove",       onSelect: handleRemove, variant: "destructive" },
+    ]}
+    loading={isFetching}
+    loadingHeight="8rem"
+  >
+    <Stat value="2.4h" />
+  </DashboardPanel>
+
+  <DashboardPanel
+    colSpan={6}
+    title="Upcoming deployments"
+    empty={!hasDeployments}
+    emptyState={<EmptyState icon={<CalendarX2 />} title="Nothing scheduled" />}
+  >
+    <DeploymentList data={deployments} />
+  </DashboardPanel>
+
+  <DashboardPanel colSpan={12} title="Recent merges">
+    <MergeList data={merges} />
+  </DashboardPanel>
+</DashboardLayout>
+```
+
+**Key rules:**
+- One visualization per panel — no multi-chart panels
+- Panel `title` must be a concise sentence fragment, lowercase, no dashes
+- Use `subtitle` for date range / scope; use `badge` for Beta/Experiment labels
+- Below 768px, all panels collapse to 1 column regardless of `colSpan`
+- No new tokens required — maps to `--card`, `--border`, `--shadow-resting`, `--muted`
+
+See `docs/compound-elements.md` for full spec and Phase 2 roadmap (drag-to-reorder, resize handles).
+
 ---
 
 ## File Structure
@@ -328,26 +392,39 @@ import { BreadcrumbList } from "@/components/ui/breadcrumb";
 ```
 akymic-design-system/
 ├── packages/
-│   └── tokens/
-│       └── tokens/
-│           ├── tokens.json        ← source of truth (edit here)
-│           └── tokens.css         ← consumer artifact (plain CSS vars only)
+│   ├── tokens/
+│   │   └── tokens/
+│   │       ├── tokens.json        ← source of truth (edit here)
+│   │       └── tokens.css         ← consumer artifact (plain CSS vars only)
+│   └── ui/
+│       └── src/                   ← @akymic/ui — promoted + compound components
+│           ├── badge.tsx          ← Badge (6 variants × 2 sizes)
+│           ├── skeleton.tsx       ← Skeleton + Spinner
+│           ├── empty-state.tsx    ← EmptyState
+│           ├── dashboard-layout.tsx   ← DashboardLayout (12-col CSS Grid)
+│           ├── dashboard-panel.tsx    ← DashboardPanel (full panel primitive)
+│           ├── dashboard-skeleton.tsx ← DashboardSkeleton (loading placeholder)
+│           ├── checkbox.tsx · radio.tsx · switch.tsx · tabs.tsx
+│           ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx
+│           └── index.ts           ← barrel export
 ├── apps/
 │   └── docs/                      ← documentation site (Next.js static export)
-│       └── src/app/components/    ← one page per component
+│       └── src/app/components/    ← one page per component family
 └── docs/
     ├── tokens.md                  ← token dictionary
     ├── components.md              ← component inventory + variants
+    ├── compound-elements.md       ← compound element specs + roadmap
     ├── gap-analysis.md            ← gap tracking vs GitHub Primer
     ├── design_decision.md         ← architecture decisions
     └── changes/                   ← per-iteration change notes
 
 akymic-app-template/               ← companion consuming app (sibling repo)
 └── src/
-    ├── components/ui/             ← all 31 components live here
-    ├── lib/                       ← calendar-utils, cn, etc.
+    ├── components/ui/             ← all 34 components live here (incl. compound)
+    ├── lib/                       ← calendar-utils, cn, theme-engine, etc.
     ├── hooks/                     ← use-focus-trap, use-lock-body-scroll
     └── app/
+        ├── compound/              ← live compound elements demo (engineering dashboard)
         ├── paper-playground/      ← visual sandbox (all components rendered)
         └── theme/                 ← Theme Studio (live token customisation)
 ```
