@@ -37,8 +37,8 @@ const COMPONENTS: { name: string; status: Status; variants: string; notes: strin
   { name: "Radio",        status: "stable",      variants: "—",                                                             notes: "RadioGroup + Radio · arrow-key navigation · ARIA radiogroup" },
   { name: "Switch",       status: "stable",      variants: "off, on, disabled",                                            notes: "SwitchField convenience wrapper · ARIA role=switch · slide animation" },
   // Planned
-  { name: "Tooltip",      status: "planned",     variants: "—",                                                             notes: "--popover · hover-triggered · delay" },
-  { name: "Dropdown",     status: "planned",     variants: "—",                                                             notes: "--accent hover · keyboard navigation" },
+  { name: "Tooltip",      status: "stable",      variants: "top, bottom, left, right",                                   notes: "hover+focus · delay prop · aria-describedby · portal" },
+  { name: "Dropdown",     status: "stable",      variants: "default, with labels, with disabled items",                    notes: "role=menu · arrow-key nav · DropdownItem/Separator/Label · portal" },
   { name: "Breadcrumb",   status: "planned",     variants: "—",                                                             notes: "—" },
   { name: "Tabs",         status: "planned",     variants: "—",                                                             notes: "—" },
 ];

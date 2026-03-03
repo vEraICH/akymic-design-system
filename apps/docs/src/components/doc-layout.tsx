@@ -36,6 +36,7 @@ const NAV = [
       { href: "/components/skeleton", label: "Skeleton & States" },
       { href: "/components/navigation", label: "Navigation Shell" },
       { href: "/components/checkbox",   label: "Checkbox, Radio & Switch" },
+      { href: "/components/tooltip",    label: "Tooltip & Dropdown" },
     ],
   },
 ];
