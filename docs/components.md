@@ -23,9 +23,9 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 | Input     | planned | default, error | sm, md | default, focus, disabled, error |
 | Textarea  | planned | default, error | — | default, focus, disabled, error |
 | Select    | planned | default, error | sm, md | default, focus, disabled, error |
-| Checkbox  | planned | — | sm, md | unchecked, checked, indeterminate, disabled |
-| Radio     | planned | — | sm, md | unchecked, checked, disabled |
-| Switch    | planned | — | sm, md | off, on, disabled |
+| Checkbox  | stable  | — | sm, md | unchecked, checked, indeterminate, disabled |
+| Radio     | stable  | — | sm, md | unchecked, checked, disabled |
+| Switch    | stable  | — | sm, md | off, on, disabled |
 
 ---
 
@@ -46,8 +46,8 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 | Topbar        | stable  | 60px header — title, search, bell, theme toggle, avatar |
 | Sidebar       | stable  | 240px — logo, 2 nav sections, user footer, active state via `usePathname` |
 | AppShell      | stable  | Opt-in layout wrapper (server component) combining Topbar + Sidebar |
-| Breadcrumb    | planned | — |
-| Tabs          | planned | — |
+| Breadcrumb    | stable  | Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbEllipsis, BreadcrumbList |
+| Tabs          | stable  | Tabs, TabsList, TabsTrigger, TabsContent; variants: line, pill |
 
 ---
 
@@ -57,8 +57,8 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 |-----------|---------|-------|
 | Dialog    | stable  | DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, DialogClose |
 | Drawer    | stable  | Same anatomy as Dialog + `side` prop (right/left/bottom/top) |
-| Tooltip   | planned | Uses `--popover` |
-| Dropdown  | planned | Uses `--popover`, `--accent` for hover |
+| Tooltip   | stable  | Portal-based; placement: top/bottom/left/right; delay prop; viewport-aware flip |
+| Dropdown  | stable  | Portal-based; DropdownMenu, DropdownItem, DropdownSeparator, DropdownLabel; keyboard nav |
 
 ---
 
@@ -195,6 +195,107 @@ Same `aria-labelledby` and return-focus gaps as Dialog.
 
 ---
 
+### Checkbox
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="checkbox"` | ✅ | On `<input type="checkbox">` |
+| `aria-checked="mixed"` | ✅ | Set when `indeterminate` prop is true |
+| `indeterminate` state | ✅ | Wired via `inputRef.current.indeterminate` (JS only, not HTML attribute) |
+| `disabled` attribute | ✅ | `pointer-events-none opacity-50` |
+| Space to toggle | ✅ | Browser native for `<input type="checkbox">` |
+| `focus-visible` ring | ✅ | `focus-visible:ring-2 focus-visible:ring-ring` |
+
+---
+
+### Radio / RadioGroup
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="radiogroup"` | ✅ | On `<RadioGroup>` wrapper |
+| `role="radio"` | ✅ | On `<input type="radio">` |
+| `aria-checked` | ✅ | Reflects `checked` state |
+| Arrow key navigation | ✅ | Up/Left → previous, Down/Right → next; wraps; skips disabled |
+| Roving tabindex | ✅ | Focused/selected item has `tabIndex=0`; all others `-1` |
+| `focus-visible` ring | ✅ | `focus-visible:ring-2 focus-visible:ring-ring` |
+
+---
+
+### Switch
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="switch"` | ✅ | On `<button>` element |
+| `aria-checked` | ✅ | Reflects checked state |
+| Space / Enter to toggle | ✅ | Handled in `onKeyDown` |
+| `disabled` attribute | ✅ | `pointer-events-none opacity-50` |
+| `focus-visible` ring | ✅ | `focus-visible:ring-2 focus-visible:ring-ring` |
+| Slide animation | ✅ | `translate-x` transition 200ms |
+
+---
+
+### Tabs
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="tablist"` | ✅ | On `<TabsList>` |
+| `role="tab"` | ✅ | On `<TabsTrigger>` |
+| `role="tabpanel"` | ✅ | On `<TabsContent>` |
+| `aria-selected` | ✅ | Reflects active state on each trigger |
+| `aria-controls` | ✅ | Each trigger points to its panel id |
+| `aria-labelledby` | ✅ | Each panel points to its trigger id |
+| Arrow keys (Left/Right) | ✅ | Navigate between enabled triggers |
+| Home / End | ✅ | Jump to first/last trigger |
+| Roving tabindex | ✅ | Active trigger has `tabIndex=0`; others `-1` |
+| `disabled` triggers | ✅ | Skipped in keyboard nav |
+
+---
+
+### Breadcrumb
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `<nav aria-label="Breadcrumb">` | ✅ | Semantic landmark |
+| `<ol>` list structure | ✅ | Screen readers announce item count |
+| `aria-current="page"` | ✅ | On the current/last `BreadcrumbLink` |
+| `aria-hidden` on separators | ✅ | Chevron SVG is decorative |
+| Focus ring on links | ✅ | `focus-visible:ring-2 focus-visible:ring-ring` |
+
+---
+
+### Tooltip
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="tooltip"` | ✅ | On the tooltip element |
+| `aria-describedby` | ✅ | Injected onto trigger when visible |
+| Show on hover + focus | ✅ | `onMouseEnter` + `onFocus` with configurable delay |
+| Hide on leave + blur | ✅ | `onMouseLeave` + `onBlur` |
+| Portal render | ✅ | `createPortal(document.body)` — no z-index stacking issues |
+| Viewport-aware placement | ✅ | Flips axis when tooltip would overflow viewport |
+
+---
+
+### Dropdown
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `role="menu"` | ✅ | On menu container |
+| `role="menuitem"` | ✅ | On `<DropdownItem>` |
+| `role="separator"` | ✅ | On `<DropdownSeparator>` |
+| `aria-haspopup="menu"` | ✅ | Injected onto trigger |
+| `aria-expanded` | ✅ | Reflects open state on trigger |
+| Arrow keys (Up/Down) | ✅ | Navigate between enabled items |
+| Home / End | ✅ | Jump to first/last item |
+| Escape to close | ✅ | Returns focus to trigger |
+| Tab to close | ✅ | Closes without stealing focus |
+| Click outside to close | ✅ | `pointerdown` listener on document |
+| Auto-focus first item | ✅ | On open via `requestAnimationFrame` |
+| Enter / Space to activate | ✅ | `onKeyDown` in `DropdownItem` |
+| Portal render | ✅ | `createPortal(document.body)` |
+
+---
+
 ## Generation Order
 
 Per CLAUDE.md roadmap:
@@ -207,3 +308,4 @@ Per CLAUDE.md roadmap:
 7. Dialogs + drawers — **stable** (2026-03-02)
 8. Toast/alerts + empty/loading states — **stable** (2026-03-02)
 9. Success + warning intent tokens — **stable** (2026-03-02)
+10. Checkbox, Radio, Switch, Tabs, Breadcrumb, Tooltip, Dropdown — **stable** (2026-03-03)

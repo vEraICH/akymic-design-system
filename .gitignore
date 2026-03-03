@@ -1,5 +1,20 @@
 .claude/
-apps/docs/node_modules/
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Lockfiles (root-level only; app-level lockfiles are intentional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Next.js
 apps/docs/.next/
 apps/docs/out/
 apps/docs/*.tsbuildinfo
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
