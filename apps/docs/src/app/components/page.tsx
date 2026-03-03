@@ -33,10 +33,10 @@ const COMPONENTS: { name: string; status: Status; variants: string; notes: strin
   { name: "MultiSelect",  status: "stable",      variants: "default, disabled",                                            notes: "Tag chips · maxDisplay overflow · clear-all" },
   { name: "DatePicker",   status: "stable",      variants: "default, error, disabled",                                     notes: "CalendarMiniMonth in popover · clearable · Intl.DateTimeFormat" },
   { name: "FileUpload",   status: "stable",      variants: "idle, drag-over, with files",                                  notes: "Drag-and-drop · maxSize · maxFiles · dedup by filename" },
+  { name: "Checkbox",     status: "stable",      variants: "unchecked, checked, indeterminate, disabled",                  notes: "CheckboxField convenience wrapper · ARIA role=checkbox" },
+  { name: "Radio",        status: "stable",      variants: "—",                                                             notes: "RadioGroup + Radio · arrow-key navigation · ARIA radiogroup" },
+  { name: "Switch",       status: "stable",      variants: "off, on, disabled",                                            notes: "SwitchField convenience wrapper · ARIA role=switch · slide animation" },
   // Planned
-  { name: "Checkbox",     status: "planned",     variants: "—",                                                             notes: "unchecked, checked, indeterminate, disabled" },
-  { name: "Radio",        status: "planned",     variants: "—",                                                             notes: "—" },
-  { name: "Switch",       status: "planned",     variants: "—",                                                             notes: "—" },
   { name: "Tooltip",      status: "planned",     variants: "—",                                                             notes: "--popover · hover-triggered · delay" },
   { name: "Dropdown",     status: "planned",     variants: "—",                                                             notes: "--accent hover · keyboard navigation" },
   { name: "Breadcrumb",   status: "planned",     variants: "—",                                                             notes: "—" },
