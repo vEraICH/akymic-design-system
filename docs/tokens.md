@@ -94,12 +94,32 @@ Use for hover states on menu items, subtle highlights. Visually identical to `--
 ### `--destructive` / `--destructive-foreground`
 | Token                    | Light           | Dark            |
 |--------------------------|-----------------|-----------------|
-| `--destructive`          | `0 84.2% 60.2%` | `0 62.8% 30.6%` |
+| `--destructive`          | `0 84.2% 60.2%` | `0 84.2% 60.2%` |
 | `--destructive-foreground` | `210 40% 98%` | `210 40% 98%`   |
 
 Use for error states, destructive actions (delete buttons, error banners).
 
-**Dark mode:** `--destructive` dark is now `0 84.2% 60.2%` — same as light mode. Bright red, readable as error text, error border, and destructive button background on dark surfaces.
+**Dark mode:** `--destructive` dark is `0 84.2% 60.2%` — same as light. Bright red, readable as error text, error border, and destructive button background on dark surfaces.
+
+---
+
+## Intent Tokens
+
+### `--success` / `--success-foreground`
+| Token                  | Light        | Dark         |
+|------------------------|--------------|--------------|
+| `--success`            | `142 76% 36%` | `142 72% 52%` |
+| `--success-foreground` | `0 0% 98%`   | `0 0% 98%`   |
+
+Forest green. Use for success confirmations, positive status badges, completed-state indicators. Light: ~5.5:1 on white. Dark: sufficient on dark surfaces.
+
+### `--warning` / `--warning-foreground`
+| Token                  | Light        | Dark         |
+|------------------------|--------------|--------------|
+| `--warning`            | `43 96% 37%` | `43 96% 56%` |
+| `--warning-foreground` | `0 0% 98%`   | `38 90% 10%` |
+
+Amber/gold. Use for non-blocking warnings, rate limits, storage alerts, deprecation notices. Dark foreground uses near-black (`38 90% 10%`) because bright amber + white has poor contrast.
 
 ---
 
@@ -128,6 +148,36 @@ Border color of form inputs (text fields, selects, checkboxes). Currently identi
 | Dark  | `224.3 76.3% 48%`       |
 
 Focus ring color. **Must remain visible** — do not reduce contrast. Apply as `box-shadow: 0 0 0 2px hsl(var(--ring))` or via Tailwind `ring` utilities.
+
+---
+
+## Shadow Tokens
+
+Shadow tokens use full CSS `box-shadow` value strings — **not** HSL components. Do not wrap with `hsl()`.
+
+### `--shadow-resting`
+| Mode  | Value |
+|-------|-------|
+| Light | `0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.06)` |
+| Dark  | `0 1px 3px 0 rgb(0 0 0 / 0.35), 0 1px 2px -1px rgb(0 0 0 / 0.25)` |
+
+Subtle lift for cards and panels at rest. Nearly invisible on light backgrounds; more pronounced on dark (where ambient occlusion needs to be explicit). Use on Card.
+
+### `--shadow-floating`
+| Mode  | Value |
+|-------|-------|
+| Light | `0 20px 25px -5px rgb(0 0 0 / 0.10), 0 8px 10px -6px rgb(0 0 0 / 0.08)` |
+| Dark  | `0 20px 25px -5px rgb(0 0 0 / 0.50), 0 8px 10px -6px rgb(0 0 0 / 0.35)` |
+
+Strong elevation for overlays that appear above the page surface: Dialog, Drawer, Toast. Dark mode uses significantly higher opacity because dark surfaces suppress perceived shadow depth.
+
+### `--shadow-inset`
+| Mode  | Value |
+|-------|-------|
+| Light | `inset 0 1px 2px 0 rgb(0 0 0 / 0.06)` |
+| Dark  | `inset 0 1px 3px 0 rgb(0 0 0 / 0.30)` |
+
+Recessed shadow for pressed/active states and input field inner depth. Available as `shadow-inset` Tailwind utility.
 
 ---
 

@@ -143,8 +143,8 @@ No chart components planned. Defer indefinitely.
 
 | Gap | Impact | Effort | Status |
 |-----|--------|--------|--------|
-| 1. Intent tokens (success + warning) | High | Low | **Close next** |
-| 2. Shadow tokens | Medium | Low | Close after Gap 1 |
-| 3. Accessibility docs | Medium | None (writing only) | Close as hygiene pass |
+| 1. Intent tokens (success + warning) | High | Low | **Closed** (2026-03-02) |
+| 2. Shadow tokens | Medium | Low | **Closed** (2026-03-02) |
+| 3. Accessibility docs | Medium | None (writing only) | **Closed** (2026-03-03) — see components.md#accessibility |
 | 4. Component-state tokens | Low | High | Defer — revisit on customer theming need |
 | 5. Data viz palette | None | — | Skip |
