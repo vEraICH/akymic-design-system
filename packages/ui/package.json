@@ -6,6 +6,25 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./button": "./src/button.tsx",
+    "./input": "./src/input.tsx",
+    "./textarea": "./src/textarea.tsx",
+    "./card": "./src/card.tsx",
+    "./divider": "./src/divider.tsx",
+    "./alert": "./src/alert.tsx",
+    "./toast": "./src/toast.tsx",
+    "./dialog": "./src/dialog.tsx",
+    "./drawer": "./src/drawer.tsx",
+    "./popover": "./src/popover.tsx",
+    "./table": "./src/table.tsx",
+    "./pagination": "./src/pagination.tsx",
+    "./filter-bar": "./src/filter-bar.tsx",
+    "./select": "./src/select.tsx",
+    "./combobox": "./src/combobox.tsx",
+    "./multi-select": "./src/multi-select.tsx",
+    "./date-picker": "./src/date-picker.tsx",
+    "./file-upload": "./src/file-upload.tsx",
+    "./calendar": "./src/calendar/index.ts",
     "./checkbox": "./src/checkbox.tsx",
     "./radio": "./src/radio.tsx",
     "./switch": "./src/switch.tsx",
@@ -26,6 +45,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.0",
+    "lucide-react": "^0.460.0",
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {

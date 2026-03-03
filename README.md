@@ -3,7 +3,7 @@
 A complete, production-ready design system for Next.js + Tailwind CSS + TypeScript applications. 34 components, 23 semantic tokens, full light/dark mode, zero runtime dependencies beyond React.
 
 **Docs site:** `apps/docs/` — run `npm run dev` from that directory → `http://localhost:3001`
-**App template:** `akymic-app-template/` — full working Next.js app with all components wired up
+**Component library:** `packages/ui/src/` — all 34 components, fully self-contained, zero runtime deps beyond React + lucide-react
 
 ---
 
@@ -14,7 +14,7 @@ A complete, production-ready design system for Next.js + Tailwind CSS + TypeScri
 ### How to use this DS in a new project
 
 1. **Copy tokens** — copy `packages/tokens/tokens/tokens.css` into your project at `src/design-system/tokens.css` and import it in your root layout.
-2. **Copy components** — copy files from `akymic-app-template/src/components/ui/` into your project's component directory. Each file is self-contained.
+2. **Copy components** — copy files from `packages/ui/src/` into your project's component directory. Each file is self-contained.
 3. **Configure Tailwind** — extend `tailwind.config.ts` with the token-mapped colors and shadows shown in the [Tailwind config section](#tailwind-config) below.
 4. **Use semantic tokens only** — never use hardcoded hex colors. Always use `bg-primary`, `text-foreground`, `border-border`, etc.
 
@@ -140,7 +140,7 @@ boxShadow: {
 
 ## Component Inventory
 
-All 34 components are in `akymic-app-template/src/components/ui/` (primitives) and `packages/ui/src/` (compound elements + promoted primitives). Every component:
+All 34 components are in `packages/ui/src/`. Every component:
 - Uses only semantic tokens
 - Has visible focus rings
 - Supports light + dark mode
@@ -397,15 +397,20 @@ akymic-design-system/
 │   │       ├── tokens.json        ← source of truth (edit here)
 │   │       └── tokens.css         ← consumer artifact (plain CSS vars only)
 │   └── ui/
-│       └── src/                   ← @akymic/ui — promoted + compound components
-│           ├── badge.tsx          ← Badge (6 variants × 2 sizes)
-│           ├── skeleton.tsx       ← Skeleton + Spinner
-│           ├── empty-state.tsx    ← EmptyState
-│           ├── dashboard-layout.tsx   ← DashboardLayout (12-col CSS Grid)
-│           ├── dashboard-panel.tsx    ← DashboardPanel (full panel primitive)
-│           ├── dashboard-skeleton.tsx ← DashboardSkeleton (loading placeholder)
+│       └── src/                   ← @akymic/ui — all 34 components
+│           ├── button.tsx · input.tsx · textarea.tsx
+│           ├── card.tsx · divider.tsx
+│           ├── alert.tsx · toast.tsx · skeleton.tsx · empty-state.tsx
+│           ├── dialog.tsx · drawer.tsx · popover.tsx
+│           ├── table.tsx · pagination.tsx · filter-bar.tsx
+│           ├── select.tsx · combobox.tsx · multi-select.tsx
+│           ├── date-picker.tsx · file-upload.tsx
 │           ├── checkbox.tsx · radio.tsx · switch.tsx · tabs.tsx
-│           ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx
+│           ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx · badge.tsx
+│           ├── dashboard-layout.tsx · dashboard-panel.tsx · dashboard-skeleton.tsx
+│           ├── calendar/          ← Calendar, MiniMonth, MonthGrid, Toolbar, etc.
+│           ├── hooks/             ← use-focus-trap, use-lock-body-scroll
+│           ├── lib/               ← utils.ts, calendar-utils.ts
 │           └── index.ts           ← barrel export
 ├── apps/
 │   └── docs/                      ← documentation site (Next.js static export)
@@ -417,16 +422,6 @@ akymic-design-system/
     ├── gap-analysis.md            ← gap tracking vs GitHub Primer
     ├── design_decision.md         ← architecture decisions
     └── changes/                   ← per-iteration change notes
-
-akymic-app-template/               ← companion consuming app (sibling repo)
-└── src/
-    ├── components/ui/             ← all 34 components live here (incl. compound)
-    ├── lib/                       ← calendar-utils, cn, theme-engine, etc.
-    ├── hooks/                     ← use-focus-trap, use-lock-body-scroll
-    └── app/
-        ├── compound/              ← live compound elements demo (engineering dashboard)
-        ├── paper-playground/      ← visual sandbox (all components rendered)
-        └── theme/                 ← Theme Studio (live token customisation)
 ```
 
 ---
@@ -446,12 +441,12 @@ cp path/to/akymic-design-system/packages/tokens/tokens/tokens.css \
 # import "@/design-system/tokens.css";
 
 # 4. Copy the components you need
-cp path/to/akymic-app-template/src/components/ui/button.tsx    my-app/src/components/ui/
-cp path/to/akymic-app-template/src/components/ui/card.tsx      my-app/src/components/ui/
+cp path/to/akymic-design-system/packages/ui/src/button.tsx    my-app/src/components/ui/
+cp path/to/akymic-design-system/packages/ui/src/card.tsx      my-app/src/components/ui/
 # ... etc.
 
 # 5. Add cn() utility (required by most components)
-cp path/to/akymic-app-template/src/lib/utils.ts  my-app/src/lib/
+cp path/to/akymic-design-system/packages/ui/src/lib/utils.ts  my-app/src/lib/
 
 # 6. Extend tailwind.config.ts with the token colors (see Tailwind Config above)
 

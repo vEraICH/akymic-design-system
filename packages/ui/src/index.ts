@@ -1,3 +1,108 @@
+// Core primitives
+export { Button, type ButtonProps } from "./button";
+export { Input, type InputProps } from "./input";
+export { Textarea, type TextareaProps } from "./textarea";
+export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "./card";
+export { Divider, type DividerProps } from "./divider";
+
+// Feedback
+export {
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  type AlertProps,
+  type AlertVariant,
+} from "./alert";
+export {
+  toast,
+  Toaster,
+  type ToastOptions,
+  type ToastVariant,
+} from "./toast";
+
+// Overlays (portal-based)
+export {
+  Dialog,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  type DialogProps,
+  type DialogContentProps,
+} from "./dialog";
+
+export {
+  Drawer,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerBody,
+  DrawerFooter,
+  type DrawerProps,
+  type DrawerContentProps,
+  type DrawerSide,
+} from "./drawer";
+
+export { PopoverPanel, type PopoverPanelProps } from "./popover";
+
+// Data display
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+  type TableBodyProps,
+  type TableHeadProps,
+  type SortDirection,
+} from "./table";
+
+export { Pagination, type PaginationProps } from "./pagination";
+export { FilterBar, type FilterBarProps, type FilterChip } from "./filter-bar";
+
+// Form inputs
+export { Select, type SelectProps, type SelectOption } from "./select";
+export { Combobox, type ComboboxProps } from "./combobox";
+export { MultiSelect, type MultiSelectProps } from "./multi-select";
+export { DatePicker, type DatePickerProps } from "./date-picker";
+export { FileUpload, type FileUploadProps } from "./file-upload";
+
+// Calendar
+export {
+  Calendar,
+  CalendarMiniMonth,
+  CalendarMonthGrid,
+  CalendarToolbar,
+  CalendarDayCell,
+  CalendarEventChip,
+  type CalendarEvent,
+  type CalendarView,
+  type CalendarEventColor,
+  type CalendarProps,
+  type CalendarMiniMonthProps,
+  type CalendarMonthGridProps,
+  type CalendarToolbarProps,
+  type CalendarDayCellProps,
+  type CalendarEventChipProps,
+} from "./calendar";
+
 // Selection controls
 export {
   Checkbox,

@@ -39,7 +39,19 @@ packages/
         ├── checkbox.tsx · radio.tsx · switch.tsx
         ├── tabs.tsx · breadcrumb.tsx
         ├── tooltip.tsx · dropdown.tsx
-        └── lib/utils.ts         ← cn() utility
+            ├── button.tsx · input.tsx · textarea.tsx
+        ├── card.tsx · divider.tsx
+        ├── alert.tsx · toast.tsx · skeleton.tsx · empty-state.tsx
+        ├── dialog.tsx · drawer.tsx · popover.tsx
+        ├── table.tsx · pagination.tsx · filter-bar.tsx
+        ├── select.tsx · combobox.tsx · multi-select.tsx
+        ├── date-picker.tsx · file-upload.tsx
+        ├── checkbox.tsx · radio.tsx · switch.tsx · tabs.tsx
+        ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx · badge.tsx
+        ├── dashboard-layout.tsx · dashboard-panel.tsx · dashboard-skeleton.tsx
+        ├── calendar/          ← Calendar, MiniMonth, MonthGrid, Toolbar, DayCell, EventChip
+        ├── hooks/             ← use-focus-trap.ts, use-lock-body-scroll.ts
+        └── lib/               ← utils.ts, calendar-utils.ts
 docs/
 ├── tokens.md                    ← Token dictionary (human + agent reference)
 ├── components.md                ← Component inventory + status
@@ -222,31 +234,35 @@ Copy `packages/tokens/tokens/tokens.css` to `akymic-app-template/src/design-syst
 | Shadow tokens | stable | `--shadow-resting` / `--shadow-floating` / `--shadow-inset` (2026-03-02) |
 | Typography scale | stable | 19 mode-agnostic vars in `:root` only |
 
-### Primitives (in `akymic-app-template/src/components/ui/`)
+### Primitives (in `packages/ui/src/`)
 | Component | Status | Notes |
 |---|---|---|
-| Button | stable | 5 variants × 3 sizes × 5 states |
+| Button | stable | 5 variants × 4 sizes (sm/default/lg/icon) × 5 states |
 | Input / Textarea | stable | error + disabled states; `aria-invalid` wired |
 | Card / Divider | stable | CardHeader/Title/Description/Content/Footer |
-| Badge | stable | 6 variants × 2 sizes; also promoted to `packages/ui` |
+| Badge | stable | 6 variants × 2 sizes |
 | Alert | stable | 5 variants; optional dismiss |
-| Toast | stable | Imperative API; auto-dismiss 4s; max 5 stacked |
-| Skeleton / Spinner | stable | animate-pulse + spinner 3 sizes; also in `packages/ui` |
-| EmptyState | stable | icon + title + description + action; also in `packages/ui` |
+| Toast | stable | Imperative API; auto-dismiss 4s; max 5 stacked; `<Toaster />` |
+| Skeleton / Spinner | stable | animate-pulse + spinner 3 sizes |
+| EmptyState | stable | icon + title + description + action |
 | Dialog / Drawer | stable | Focus trap, body scroll lock, portal, return focus |
-| Tooltip | stable | Portal, viewport-aware flip, `aria-describedby`; also in `packages/ui` |
-| Dropdown | stable | `role=menu`, arrow-key nav, portal; also in `packages/ui` |
+| Tooltip | stable | Portal, viewport-aware flip, `aria-describedby` |
+| Dropdown | stable | `role=menu`, arrow-key nav, portal |
 | Select / Combobox | stable | Popover-based, ARIA combobox, keyboard nav |
 | MultiSelect | stable | Tag chips, maxDisplay overflow, clear-all |
 | DatePicker | stable | CalendarMiniMonth in popover, clearable |
 | FileUpload | stable | Drag-and-drop, maxSize, maxFiles, dedup |
-| Checkbox / Radio / Switch | stable | Accessible, roving tabindex on RadioGroup; also in `packages/ui` |
-| Tabs / Breadcrumb | stable | Roving tabindex, arrow-key nav; also in `packages/ui` |
+| Checkbox / Radio / Switch | stable | Accessible, roving tabindex on RadioGroup |
+| Tabs / Breadcrumb | stable | Roving tabindex, arrow-key nav |
 | Table + Pagination | stable | Sortable headers (`aria-sort`), striped rows, FilterBar |
 | Calendar | stable | Zero deps, event chips, arrow-key nav, `role=grid` |
-| NavSidebar / Topbar / AppShell | stable | 240px sidebar + 60px topbar + server-compatible wrapper |
 
-### Compound elements (in `packages/ui/src/` + `akymic-app-template/src/components/ui/`)
+### App-specific (in `akymic-app-template/src/`, not in `packages/ui/`)
+| Component | Notes |
+|---|---|
+| NavSidebar / Topbar / AppShell | 240px sidebar + 60px topbar + server-compatible wrapper; app-layout pattern, not a DS primitive |
+
+### Compound elements (in `packages/ui/src/`)
 | Component | Status | Notes |
 |---|---|---|
 | DashboardLayout | stable | 12-col CSS Grid, responsive collapse, loading→DashboardSkeleton |
@@ -310,7 +326,7 @@ Before completing any iteration, verify:
 - [ ] `tokens.json` and `tokens.css` are in sync
 - [ ] Change note created in `docs/changes/`
 - [ ] `docs/components.md` status updated if a component changed
-- [ ] If adding a compound element: `docs/compound-elements.md` updated; `packages/ui/src/` and `akymic-app-template/src/components/ui/` both updated
+- [ ] If adding a compound element: `docs/compound-elements.md` updated; component added to `packages/ui/src/` with barrel export
 
 ---
 
@@ -323,5 +339,5 @@ Before completing any iteration, verify:
 | Add a token without both `light` and `dark` | Dark mode will break |
 | Name a token after its color (`--blue600`) | Tokens must survive color changes |
 | Rename a token without a deprecation window | Breaking change for consumers |
-| Edit `akymic-app-template` component APIs from this repo | Wrong boundary |
+| Add app-specific layout components (NavSidebar, AppShell) to `packages/ui` | Wrong boundary — app layouts belong in consuming apps |
 | Skip the change note | Governance requires traceability |
