@@ -1,1 +1,5 @@
 .claude/
+apps/docs/node_modules/
+apps/docs/.next/
+apps/docs/out/
+apps/docs/*.tsbuildinfo
