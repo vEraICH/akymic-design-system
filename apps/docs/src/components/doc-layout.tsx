@@ -40,6 +40,12 @@ const NAV = [
       { href: "/components/tabs",       label: "Tabs & Breadcrumb" },
     ],
   },
+  {
+    label: "Compound Elements",
+    items: [
+      { href: "/components/compound", label: "Dashboard Layout" },
+    ],
+  },
 ];
 
 export function DocLayout({ children }: { children: React.ReactNode }) {

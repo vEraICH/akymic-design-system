@@ -12,7 +12,13 @@
     "./tabs": "./src/tabs.tsx",
     "./breadcrumb": "./src/breadcrumb.tsx",
     "./tooltip": "./src/tooltip.tsx",
-    "./dropdown": "./src/dropdown.tsx"
+    "./dropdown": "./src/dropdown.tsx",
+    "./badge": "./src/badge.tsx",
+    "./skeleton": "./src/skeleton.tsx",
+    "./empty-state": "./src/empty-state.tsx",
+    "./dashboard-layout": "./src/dashboard-layout.tsx",
+    "./dashboard-panel": "./src/dashboard-panel.tsx",
+    "./dashboard-skeleton": "./src/dashboard-skeleton.tsx"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

@@ -36,6 +36,10 @@ const COMPONENTS: { name: string; status: Status; variants: string; notes: strin
   { name: "Checkbox",     status: "stable",      variants: "unchecked, checked, indeterminate, disabled",                  notes: "CheckboxField convenience wrapper · ARIA role=checkbox" },
   { name: "Radio",        status: "stable",      variants: "—",                                                             notes: "RadioGroup + Radio · arrow-key navigation · ARIA radiogroup" },
   { name: "Switch",       status: "stable",      variants: "off, on, disabled",                                            notes: "SwitchField convenience wrapper · ARIA role=switch · slide animation" },
+  // Compound elements
+  { name: "DashboardLayout",   status: "stable", variants: "columns: 4|6|8|12 · gap: sm|md|lg",                  notes: "12-col CSS Grid · responsive collapse · loading→DashboardSkeleton · headerActions slot" },
+  { name: "DashboardPanel",    status: "stable", variants: "default, loading, empty",                            notes: "section landmark · header: icon/title/badge/info/actions · body slot · colSpan/rowSpan" },
+  { name: "DashboardSkeleton", status: "stable", variants: "—",                                                  notes: "Grid-matched loading placeholder · used automatically by DashboardLayout" },
   // Planned
   { name: "Tooltip",      status: "stable",      variants: "top, bottom, left, right",                                   notes: "hover+focus · delay prop · aria-describedby · portal" },
   { name: "Dropdown",     status: "stable",      variants: "default, with labels, with disabled items",                    notes: "role=menu · arrow-key nav · DropdownItem/Separator/Label · portal" },

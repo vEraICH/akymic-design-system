@@ -35,7 +35,7 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 |-----------|---------|----------|-------|
 | Card      | stable  | default, interactive (via className) | CardHeader, CardTitle, CardDescription, CardContent, CardFooter |
 | Divider   | stable  | horizontal (plain + labeled), vertical | Uses `--border` |
-| Badge     | stable  | default, secondary, destructive, outline, success, warning | sizes: sm, default |
+| Badge     | stable  | default, secondary, destructive, outline, success, warning | sizes: sm, default; promoted to `packages/ui` (2026-03-03) |
 
 ---
 
@@ -68,8 +68,8 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 |-------------|---------|----------|
 | Alert        | stable  | default, info, success, warning, destructive |
 | Toast        | stable  | default, info, success, warning, destructive |
-| Empty state  | stable  | — |
-| Loading / Skeleton | stable | spinner (sm/default/lg), skeleton (block) |
+| Empty state  | stable  | — | promoted to `packages/ui` (2026-03-03) |
+| Loading / Skeleton | stable | spinner (sm/default/lg), skeleton (block) | promoted to `packages/ui` (2026-03-03) |
 
 ---
 
@@ -82,6 +82,20 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 | FilterBar  | stable  | search input with icon |
 
 ---
+
+---
+
+## Compound Elements
+
+Compound elements are higher-order components that compose multiple primitives into opinionated, reusable layout patterns. They represent full UI patterns rather than atoms or molecules, and are the primary vehicle for the DS's **dashboard layout** concept.
+
+See `docs/compound-elements.md` for full specs, anatomy, and API.
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| DashboardLayout | stable | 12-col CSS Grid container; responsive collapse (→1 col below 768px); gap + column control; `"use client"` |
+| DashboardPanel | stable | Panel primitive: header (title/icon/badge/info/actions) + optional subtitle/filters + body + loading/empty states; `"use client"` |
+| DashboardSkeleton | stable | Full-layout loading placeholder; matches panel grid positions |
 
 ---
 
@@ -296,6 +310,20 @@ Same `aria-labelledby` and return-focus gaps as Dialog.
 
 ---
 
+### DashboardPanel
+
+| Attribute / Behaviour | Status | Notes |
+|-----------------------|--------|-------|
+| `<section>` element per panel | ✅ | Each panel is a named landmark |
+| `aria-label` on each `<section>` | ✅ | Uses the `title` prop value |
+| `aria-busy="true"` on body when loading | ✅ | Set on body wrapper while `loading=true` |
+| `aria-label="More actions"` on `⋯` button | ✅ | Icon-only button has explicit label |
+| Info button `aria-label` | ✅ | `"More information about [title]"` |
+| `role="status"` on empty state | ✅ | Announced politely when content arrives |
+| Focus ring on header interactive elements | ✅ | All buttons: `focus-visible:ring-2 focus-visible:ring-ring` |
+
+---
+
 ## Generation Order
 
 Per CLAUDE.md roadmap:
@@ -309,3 +337,4 @@ Per CLAUDE.md roadmap:
 8. Toast/alerts + empty/loading states — **stable** (2026-03-02)
 9. Success + warning intent tokens — **stable** (2026-03-02)
 10. Checkbox, Radio, Switch, Tabs, Breadcrumb, Tooltip, Dropdown — **stable** (2026-03-03)
+11. Compound elements — DashboardLayout + DashboardPanel + DashboardSkeleton — **stable** (2026-03-03; see `docs/compound-elements.md`)
