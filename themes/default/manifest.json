@@ -1,0 +1,6 @@
+{
+  "primary": "221 83% 53%",
+  "neutral": "cool",
+  "radius": "md",
+  "$note": "Default Akymic theme. Matches the base tokens in packages/tokens/tokens/tokens.css."
+}

@@ -1,0 +1,186 @@
+{
+  "light": {
+    "pass": true,
+    "pairs": [
+      {
+        "role": "foreground on background",
+        "fg": "220 12% 12%",
+        "bg": "220 7% 97.5%",
+        "ratio": 15.89,
+        "pass": true
+      },
+      {
+        "role": "foreground on card",
+        "fg": "220 12% 12%",
+        "bg": "220 7% 96%",
+        "ratio": 15.35,
+        "pass": true
+      },
+      {
+        "role": "foreground on popover",
+        "fg": "220 12% 12%",
+        "bg": "220 7% 98.5%",
+        "ratio": 16.25,
+        "pass": true
+      },
+      {
+        "role": "primary on background",
+        "fg": "243.4 75.4% 58.6%",
+        "bg": "220 7% 97.5%",
+        "ratio": 5.95,
+        "pass": true
+      },
+      {
+        "role": "primary-foreground on primary",
+        "fg": "0 0% 98%",
+        "bg": "243.4 75.4% 58.6%",
+        "ratio": 6.03,
+        "pass": true
+      },
+      {
+        "role": "secondary-foreground on secondary",
+        "fg": "220 12% 20%",
+        "bg": "243.4 10% 92%",
+        "ratio": 10.74,
+        "pass": true
+      },
+      {
+        "role": "muted-foreground on muted",
+        "fg": "220 12% 40%",
+        "bg": "220 10% 94%",
+        "ratio": 5.35,
+        "pass": true
+      },
+      {
+        "role": "muted-foreground on background",
+        "fg": "220 12% 40%",
+        "bg": "220 7% 97.5%",
+        "ratio": 5.8,
+        "pass": true
+      },
+      {
+        "role": "accent-foreground on accent",
+        "fg": "243.4 50% 20%",
+        "bg": "243.4 15% 90%",
+        "ratio": 12.51,
+        "pass": true
+      },
+      {
+        "role": "destructive-foreground on destructive",
+        "fg": "0 0% 98%",
+        "bg": "0 84.2% 60.2%",
+        "ratio": 3.6,
+        "pass": false,
+        "informational": true
+      },
+      {
+        "role": "success-foreground on success",
+        "fg": "0 0% 98%",
+        "bg": "142 76% 36%",
+        "ratio": 3.21,
+        "pass": false,
+        "informational": true
+      },
+      {
+        "role": "warning-foreground on warning",
+        "fg": "0 0% 98%",
+        "bg": "43 96% 37%",
+        "ratio": 3.12,
+        "pass": false,
+        "informational": true
+      }
+    ]
+  },
+  "dark": {
+    "pass": true,
+    "pairs": [
+      {
+        "role": "foreground on background",
+        "fg": "220 7% 96%",
+        "bg": "220 9% 8%",
+        "ratio": 16.87,
+        "pass": true
+      },
+      {
+        "role": "foreground on card",
+        "fg": "220 7% 96%",
+        "bg": "220 9% 12%",
+        "ratio": 15.3,
+        "pass": true
+      },
+      {
+        "role": "foreground on popover",
+        "fg": "220 7% 96%",
+        "bg": "220 9% 11%",
+        "ratio": 15.71,
+        "pass": true
+      },
+      {
+        "role": "primary on background",
+        "fg": "243.4 75.4% 67.4%",
+        "bg": "220 9% 8%",
+        "ratio": 4.52,
+        "pass": true
+      },
+      {
+        "role": "primary-foreground on primary",
+        "fg": "0 0% 7.7%",
+        "bg": "243.4 75.4% 67.4%",
+        "ratio": 4.52,
+        "pass": true
+      },
+      {
+        "role": "secondary-foreground on secondary",
+        "fg": "220 7% 90%",
+        "bg": "243.4 10% 18%",
+        "ratio": 11.35,
+        "pass": true
+      },
+      {
+        "role": "muted-foreground on muted",
+        "fg": "220 12% 60%",
+        "bg": "220 10% 15%",
+        "ratio": 5.1,
+        "pass": true
+      },
+      {
+        "role": "muted-foreground on background",
+        "fg": "220 12% 60%",
+        "bg": "220 9% 8%",
+        "ratio": 6.13,
+        "pass": true
+      },
+      {
+        "role": "accent-foreground on accent",
+        "fg": "243.4 40% 90%",
+        "bg": "243.4 15% 22%",
+        "ratio": 9.54,
+        "pass": true
+      },
+      {
+        "role": "destructive-foreground on destructive",
+        "fg": "0 0% 98%",
+        "bg": "0 84.2% 60.2%",
+        "ratio": 3.6,
+        "pass": false,
+        "informational": true
+      },
+      {
+        "role": "success-foreground on success",
+        "fg": "0 0% 98%",
+        "bg": "142 72% 52%",
+        "ratio": 1.73,
+        "pass": false,
+        "informational": true
+      },
+      {
+        "role": "warning-foreground on warning",
+        "fg": "38 90% 10%",
+        "bg": "43 96% 56%",
+        "ratio": 9.33,
+        "pass": true,
+        "informational": true
+      }
+    ]
+  }
+}

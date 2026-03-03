@@ -1,0 +1,14 @@
+{
+  "name": "@akymic/theming",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Theme derivation engine for Akymic Design System",
+  "type": "module",
+  "main": "./src/index.ts",
+  "bin": {
+    "akym-theme": "./bin/akym-theme.ts"
+  },
+  "scripts": {
+    "generate": "tsx bin/akym-theme.ts generate"
+  }
+}
