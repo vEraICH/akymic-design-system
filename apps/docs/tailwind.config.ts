@@ -58,6 +58,33 @@ const config: Config = {
         floating: "var(--shadow-floating)",
         inset: "var(--shadow-inset)",
       },
+      transitionDuration: {
+        instant: "var(--duration-instant)",
+        fast:    "var(--duration-fast)",
+        normal:  "var(--duration-normal)",
+        slow:    "var(--duration-slow)",
+        slower:  "var(--duration-slower)",
+      },
+      transitionTimingFunction: {
+        standard: "var(--ease-standard)",
+        enter:    "var(--ease-enter)",
+        exit:     "var(--ease-exit)",
+        spring:   "var(--ease-spring)",
+      },
+      keyframes: {
+        "zoom-in-95": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to:   { opacity: "1", transform: "scale(1)"    },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to:   { opacity: "1" },
+        },
+      },
+      animation: {
+        "zoom-in-95": "zoom-in-95 var(--duration-fast) var(--ease-enter) both",
+        "fade-in":    "fade-in var(--duration-fast) var(--ease-enter) both",
+      },
     },
   },
   plugins: [],

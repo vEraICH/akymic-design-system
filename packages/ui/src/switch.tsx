@@ -68,7 +68,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
       className={cn(
         trackSize,
         "relative inline-flex cursor-pointer items-center rounded-full border-2 border-transparent",
-        "transition-colors duration-200 ease-in-out",
+        "transition-colors duration-normal ease-standard",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
         checked ? "bg-primary" : "bg-input",
@@ -79,7 +79,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
         className={cn(
           thumbSize,
           "pointer-events-none block rounded-full bg-background shadow-sm ring-0",
-          "transition-transform duration-200 ease-in-out",
+          "transition-transform duration-normal ease-standard",
           thumbTranslate
         )}
       />

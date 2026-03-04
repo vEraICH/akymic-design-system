@@ -151,7 +151,7 @@ export function DrawerContent({
       aria-hidden={!visible}
       className={cn(
         "fixed inset-0 z-50",
-        "transition-opacity duration-300",
+        "transition-opacity duration-slow ease-standard",
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
     >
@@ -169,7 +169,7 @@ export function DrawerContent({
         aria-modal="true"
         className={cn(
           "absolute z-10 flex flex-col bg-background shadow-floating",
-          "transition-transform duration-300 ease-in-out",
+          "transition-transform duration-slow ease-enter",
           sideBase[side],
           visible ? "translate-x-0 translate-y-0" : hiddenTranslate[side],
           className

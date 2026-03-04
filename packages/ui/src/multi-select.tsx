@@ -187,7 +187,7 @@ export function MultiSelect({
           )}
           <ChevronDown
             className={cn(
-              "h-4 w-4 text-muted-foreground transition-transform duration-150",
+              "h-4 w-4 text-muted-foreground transition-transform duration-fast",
               open && "rotate-180"
             )}
           />

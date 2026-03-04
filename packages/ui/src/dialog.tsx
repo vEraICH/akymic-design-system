@@ -130,7 +130,7 @@ export function DialogContent({ children, className, hideClose = false }: Dialog
       aria-hidden={!visible}
       className={cn(
         "fixed inset-0 z-50 flex items-center justify-center p-4",
-        "transition-opacity duration-200",
+        "transition-opacity duration-normal ease-standard",
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
     >
@@ -148,7 +148,7 @@ export function DialogContent({ children, className, hideClose = false }: Dialog
         aria-modal="true"
         className={cn(
           "relative z-10 w-full max-w-md rounded-lg border border-border bg-background shadow-floating",
-          "transition-all duration-200",
+          "transition-all duration-normal ease-enter",
           visible ? "opacity-100 scale-100" : "opacity-0 scale-95",
           className
         )}

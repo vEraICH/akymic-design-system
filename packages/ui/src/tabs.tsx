@@ -155,7 +155,7 @@ export const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
         onClick={() => !disabled && onTabChange(value)}
         className={cn(
           "relative inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium",
-          "transition-colors duration-150",
+          "transition-colors duration-fast",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
           variant === "line"

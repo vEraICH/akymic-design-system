@@ -114,7 +114,7 @@ function ToastCard({ item, onDismiss }: ToastCardProps) {
       aria-live="polite"
       className={cn(
         "flex w-80 items-start gap-3 rounded-lg border px-4 py-3 shadow-floating",
-        "transition-all duration-300",
+        "transition-all duration-slow ease-enter",
         visible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-2",

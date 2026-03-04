@@ -59,7 +59,7 @@ export function BreadcrumbLink({
       href={href}
       aria-current={current ? "page" : undefined}
       className={cn(
-        "text-sm transition-colors duration-150",
+        "text-sm transition-colors duration-fast",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm",
         current
           ? "font-medium text-foreground pointer-events-none"

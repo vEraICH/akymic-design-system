@@ -146,7 +146,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         className={cn(
           sizeClasses,
           "mt-0.5 cursor-pointer appearance-none rounded-full border border-input bg-background",
-          "transition-colors duration-150",
+          "transition-colors duration-fast",
           "checked:border-primary checked:bg-primary",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",

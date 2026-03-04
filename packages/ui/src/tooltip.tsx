@@ -160,7 +160,7 @@ export function Tooltip({
               "pointer-events-none max-w-xs rounded-md px-2.5 py-1.5",
               "bg-popover text-popover-foreground text-xs shadow-md",
               "border border-border",
-              "animate-in fade-in-0 zoom-in-95 duration-100",
+              "animate-zoom-in-95",
               className
             )}
           >

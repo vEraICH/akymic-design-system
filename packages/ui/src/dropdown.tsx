@@ -158,7 +158,7 @@ export function DropdownMenu({
             style={{ position: "absolute", top: pos.top, left: pos.left, zIndex: 9999 }}
             className={cn(
               "min-w-[10rem] rounded-md border border-border bg-popover p-1 shadow-floating",
-              "animate-in fade-in-0 zoom-in-95 duration-100",
+              "animate-zoom-in-95",
               className
             )}
           >
@@ -213,7 +213,7 @@ export const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>(
         onKeyDown={handleKeyDown}
         className={cn(
           "flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
-          "outline-none transition-colors duration-100",
+          "outline-none transition-colors duration-fast",
           "focus-visible:bg-accent focus-visible:text-accent-foreground",
           "hover:bg-accent hover:text-accent-foreground",
           variant === "destructive"

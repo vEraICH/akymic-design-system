@@ -63,7 +63,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         className={cn(
           sizeClasses,
           "cursor-pointer appearance-none rounded-sm border border-input bg-background",
-          "transition-colors duration-150",
+          "transition-colors duration-fast",
           "checked:border-primary checked:bg-primary",
           "indeterminate:border-primary indeterminate:bg-primary",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
