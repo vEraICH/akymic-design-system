@@ -1,7 +1,7 @@
 # CLAUDE.md — Akymic Design System — Governance & Operating Instructions
 
 ## Mission
-You are the Design Generator for Akymic's Design System — a mature, stable library of 34 components, 35 tokens (23 color + 3 shadow + 9 motion), 19 typography vars, and a static documentation site.
+You are the Design Generator for Akymic's Design System — a mature, stable library of 35 components, 35 tokens (23 color + 3 shadow + 9 motion), 19 typography vars, and a static documentation site.
 
 Your job is to extend the system carefully: propose improvements, evolve tokens, add components, and maintain coherence across Light/Dark. Ship small, safe, reviewable changes.
 
@@ -97,10 +97,13 @@ Shadow tokens (3 roles, full CSS box-shadow strings):
 
 ## Component Library (Current State)
 
-All 34 components are stable and canonical in `packages/ui/src/`. See `docs/components.md` for full inventory.
+All 35 components are stable and canonical in `packages/ui/src/`. See `docs/components.md` for full inventory.
 
 ### Primitives
 Button · Input · Textarea · Card · Divider · Badge · Alert · Toast · Skeleton · Spinner · EmptyState · Dialog · Drawer · Tooltip · Dropdown · Select · Combobox · MultiSelect · DatePicker · FileUpload · Checkbox · Radio · Switch · Tabs · Breadcrumb · Table · Pagination · FilterBar · Calendar
+
+### Rich / third-party wrappers
+DataGrid (AG Grid Community — peer dep, sub-path export `@akymic/ui/data-grid`)
 
 ### Compound elements
 DashboardLayout · DashboardPanel · DashboardSkeleton
@@ -133,7 +136,7 @@ Include:
 
 ### Documentation site
 - Lives at `apps/docs/`; run with `cd apps/docs && npm run dev` (port 3030)
-- 21 static pages covering foundations (color, typography), all component galleries, and token reference
+- 22 static pages covering foundations (color, typography), all component galleries, DataGrid, and token reference
 - Token CSS must be manually copied: `packages/tokens/tokens/tokens.css` → `apps/docs/src/design-system/tokens.css` after any token change
 
 ---

@@ -1,0 +1,68 @@
+/*
+ * Akymic → AG Grid Token Bridge
+ *
+ * Maps AG Grid's --ag-* CSS custom properties to Akymic design tokens.
+ * Import this file alongside AG Grid's styles to apply the Akymic theme.
+ *
+ * All color values use hsl(var(--token)) which resolves differently
+ * under .dark {}, so dark mode works automatically.
+ *
+ * No new tokens are introduced — every value traces to an existing
+ * Akymic token defined in packages/tokens/tokens/tokens.css.
+ */
+
+.akymic-data-grid {
+  /* ── Colors ──────────────────────────────────────────────────────── */
+  --ag-background-color: hsl(var(--background));
+  --ag-foreground-color: hsl(var(--foreground));
+  --ag-header-background-color: hsl(var(--muted));
+  --ag-header-foreground-color: hsl(var(--foreground));
+  --ag-chrome-background-color: hsl(var(--muted));
+  --ag-secondary-foreground-color: hsl(var(--muted-foreground));
+  --ag-border-color: hsl(var(--border));
+  --ag-row-border-color: hsl(var(--border));
+  --ag-secondary-border-color: hsl(var(--border));
+  --ag-accent-color: hsl(var(--primary));
+  --ag-row-hover-color: hsl(var(--muted) / 0.3);
+  --ag-selected-row-background-color: hsl(var(--primary) / 0.08);
+  --ag-range-selection-border-color: hsl(var(--ring));
+  --ag-range-selection-background-color: hsl(var(--primary) / 0.1);
+  --ag-invalid-color: hsl(var(--destructive));
+  --ag-input-focus-border-color: hsl(var(--ring));
+  --ag-checkbox-checked-color: hsl(var(--primary));
+  --ag-checkbox-unchecked-color: hsl(var(--border));
+  --ag-toggle-button-on-background-color: hsl(var(--primary));
+  --ag-toggle-button-off-background-color: hsl(var(--muted));
+  --ag-card-shadow: var(--shadow-resting);
+  --ag-popup-shadow: var(--shadow-floating);
+
+  /* ── Typography ──────────────────────────────────────────────────── */
+  --ag-font-family: var(--font-sans);
+  --ag-font-size: var(--text-sm);
+  --ag-header-font-weight: 600;
+  --ag-header-font-size: var(--text-xs);
+
+  /* ── Geometry ────────────────────────────────────────────────────── */
+  --ag-border-radius: calc(var(--radius) - 2px);
+  --ag-input-border-radius: calc(var(--radius) - 4px);
+
+  /* ── Motion ──────────────────────────────────────────────────────── */
+  --ag-transition-duration: var(--duration-fast);
+
+  /* ── Spacing ─────────────────────────────────────────────────────── */
+  --ag-cell-horizontal-padding: 16px;
+  --ag-header-height: 40px;
+  --ag-row-height: 44px;
+}
+
+/* ── Striped rows ────────────────────────────────────────────────── */
+.ag-data-grid-striped .ag-row-even {
+  background-color: hsl(var(--muted) / 0.15);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .akymic-data-grid {
+    --ag-transition-duration: 0.01ms;
+  }
+}

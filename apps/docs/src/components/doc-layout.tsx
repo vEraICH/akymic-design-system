@@ -39,6 +39,7 @@ const NAV = [
       { href: "/components/checkbox",   label: "Checkbox, Radio & Switch" },
       { href: "/components/tooltip",    label: "Tooltip & Dropdown" },
       { href: "/components/tabs",       label: "Tabs & Breadcrumb" },
+      { href: "/components/data-grid",  label: "DataGrid" },
     ],
   },
   {

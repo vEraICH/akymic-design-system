@@ -78,6 +78,7 @@ Status legend: `planned` | `in-progress` | `stable` | `deprecated`
 | Component  | Status  | Notes |
 |-----------|---------|-------|
 | Table     | stable  | TableHeader, TableBody (striped prop), TableRow, TableHead (sortable), TableCell |
+| DataGrid  | stable  | AG Grid wrapper; virtualization, resize, filter, pagination, selection; peer dep pattern; sub-path export `@akymic/ui/data-grid` |
 | Pagination | stable  | page / pageCount / onPageChange |
 | FilterBar  | stable  | search input with icon |
 

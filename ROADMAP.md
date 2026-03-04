@@ -186,3 +186,4 @@
 | AKYD-081 | Accessibility fixes — all 5 gaps | completed | aria-invalid, return focus, toast pause, calendar grid roles, table aria-sort | [2026-03-03-accessibility-fixes](docs/changes/2026-03-03-accessibility-fixes.md) |
 | AKYD-082 | Theming engine + Theme Studio | completed | CLI: derive, sync-main, apply-to-app; live preview in app | [2026-03-03-theming-engine](docs/changes/2026-03-03-theming-engine.md) |
 | AKYD-083 | Full primitive migration to packages/ui | completed | All 34 components canonical in `packages/ui/src/`; barrel export | [2026-03-04-full-primitive-migration](docs/changes/2026-03-04-full-primitive-migration.md) |
+| AKYD-085 | DataGrid — AG Grid integration (theme bridge + wrapper + docs) | completed | Peer dep; token bridge; `<DataGrid>` wrapper; sub-path export; docs page live | [2026-03-04-datagrid-theme-bridge](docs/changes/2026-03-04-datagrid-theme-bridge.md) |
