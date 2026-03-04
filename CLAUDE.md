@@ -1,23 +1,23 @@
-# claude.md — Akymic Design System (Paper.design) — Design Generator Mode
+# CLAUDE.md — Akymic Design System — Governance & Operating Instructions
 
 ## Mission
-You are the Design Generator for Akymic’s Design System.
+You are the Design Generator for Akymic's Design System — a mature, stable library of 34 components, 26 tokens (23 color + 3 shadow), 19 typography vars, and a static documentation site.
 
-Your job is to proactively push the design system forward: propose UI directions, generate component specs, evolve tokens, and continuously improve coherence across Light/Dark. You will use Paper.design as the visual canvas and this repo as the governed contract.
-
-You must ship small, safe, reviewable changes that improve the DS over time.
+Your job is to extend the system carefully: propose improvements, evolve tokens, add components, and maintain coherence across Light/Dark. Ship small, safe, reviewable changes.
 
 ---
 
-## Operating Mode: Design Generator (Primary)
-You will:
-- propose new component patterns and interaction models,
-- create/adjust semantic tokens,
-- produce Paper-ready component specs (names, states, anatomy),
-- keep the DS compatible with the consuming Next.js + Tailwind + shadcn/ui paradigm,
-- provide migration notes for any consumer-impacting change.
+## Operating Workflow (5 Steps)
 
-You will NOT wait to be asked for every decision—when requirements are missing, you make reasonable assumptions and clearly label them.
+Every task — whether a new component, token change, doc update, or bug fix — follows this sequence:
+
+1. **Plan** — Read the relevant files. State what will change, why, and what files are affected.
+2. **Code** — Make the changes. Prefer editing existing files over creating new ones.
+3. **Verify** — Check the quality gates below. Confirm light + dark, focus rings, token names, CSS safety.
+4. **Human Review** — Present a `git diff`-ready summary. Wait for approval before committing.
+5. **Mark Task** — Update `ROADMAP.md` (flip status to `completed`) and create a change note in `docs/changes/`.
+
+Do not skip steps. Do not commit without human review unless explicitly authorized.
 
 ---
 
@@ -25,7 +25,7 @@ You will NOT wait to be asked for every decision—when requirements are missing
 1) **Tokens are authoritative.** No hard-coded hex colors in components.
 2) **Light + Dark from day 1.** Every new semantic token must define both modes.
 3) **Diff-friendly changes.** No huge rewrites; prefer incremental PR-sized changes.
-4) **Consumer safety.** Don’t break apps silently. If breaking is unavoidable:
+4) **Consumer safety.** Don't break apps silently. If breaking is unavoidable:
    - document migration,
    - provide compatibility window where possible.
 5) **CSS safety.** `tokens.css` must be plain CSS variables only:
@@ -38,14 +38,17 @@ You will NOT wait to be asked for every decision—when requirements are missing
 ---
 
 ## Repos & Boundaries
-### You own (this repo)
-- `packages/tokens/tokens/tokens.json` (source of truth)
-- `packages/tokens/tokens/tokens.css` (consumer artifact)
-- `docs/` (governance, specs, workflow)
-- `packages/ui/` (future promoted shared components; keep minimal unless explicitly asked)
+### This repo owns
+- `packages/tokens/tokens/tokens.json` — source of truth for all tokens
+- `packages/tokens/tokens/tokens.css` — consumer artifact (plain CSS vars only)
+- `packages/ui/src/` — 34 canonical component modules; barrel-exported via `index.ts`
+- `packages/theming/` — theming engine + CLI (`derive`, `sync-main`, `apply-to-app`)
+- `apps/docs/` — static documentation site (Next.js 15, port 3030)
+- `docs/` — governance, specs, workflow, change notes
 
-### You do not own
-- App layouts and app-specific one-offs (those live in the consuming app and may override locally).
+### This repo does NOT own
+- App layouts and page-specific one-offs (live in consuming app)
+- `NavSidebar`, `Topbar`, `AppShell` — layout shells, belong in `akymic-app-template`
 
 ---
 
@@ -60,11 +63,11 @@ You will NOT wait to be asked for every decision—when requirements are missing
 
 ## Token Strategy (Strict)
 ### Semantic tokens only
-✅ `background`, `foreground`, `card`, `muted`, `primary`, `border`, `ring`  
+✅ `background`, `foreground`, `card`, `muted`, `primary`, `border`, `ring`, `success`, `warning`
 ❌ `gray100`, `blue500`, `akymicBlue`
 
-### Required token set (shadcn-compatible baseline)
-Maintain at least:
+### Current token baseline
+Color tokens (23 roles, each with light + dark):
 - `--background`, `--foreground`
 - `--card`, `--card-foreground`
 - `--popover`, `--popover-foreground`
@@ -73,60 +76,39 @@ Maintain at least:
 - `--muted`, `--muted-foreground`
 - `--accent`, `--accent-foreground`
 - `--destructive`, `--destructive-foreground`
+- `--success`, `--success-foreground`
+- `--warning`, `--warning-foreground`
 - `--border`, `--input`, `--ring`
 - `--radius`
 
+Shadow tokens (3 roles, full CSS box-shadow strings):
+- `--shadow-resting` — cards, panels
+- `--shadow-floating` — dialogs, drawers, toasts
+- `--shadow-inset` — pressed states, inset inputs
+
 ### Values format
-- Store as `H S% L%` strings for `hsl(var(--token))`.
-- Every semantic token must have both:
-  - `light`
-  - `dark`
+- Color tokens: store as `H S% L%` strings for `hsl(var(--token))`.
+- Shadow tokens: full CSS `box-shadow` strings (not HSL); defined in both `:root {}` and `.dark {}`.
+- Typography tokens: plain lengths/numbers; mode-agnostic; `:root {}` only.
+- Every color token must have both `light` and `dark` defined.
 
 ---
 
-## Paper.design Workflow (Generator Edition)
-Paper is the canvas; this repo is the contract.
+## Component Library (Current State)
 
-### Your responsibilities
-1) **Propose design directions** (components + layout primitives):
-   - navigation shell
-   - forms
-   - tables
-   - dialogs
-   - toast/alerts
-   - empty states
-   - loading states
-2) **Define component specs** that Paper can implement:
-   - component name
-   - anatomy
-   - variants
-   - sizes
-   - states (default/hover/active/disabled/focus/error)
-3) **Translate to tokens**:
-   - if Paper design introduces new roles, update tokens.json + tokens.css
-4) **Document the spec**:
-   - token meaning
-   - usage guidance
-   - do/don’t examples
-5) **Validate with consumer app**:
-   - visual sanity in light/dark
-   - focus rings visible
-   - text readable on all surfaces
+All 34 components are stable and canonical in `packages/ui/src/`. See `docs/components.md` for full inventory.
 
----
+### Primitives
+Button · Input · Textarea · Card · Divider · Badge · Alert · Toast · Skeleton · Spinner · EmptyState · Dialog · Drawer · Tooltip · Dropdown · Select · Combobox · MultiSelect · DatePicker · FileUpload · Checkbox · Radio · Switch · Tabs · Breadcrumb · Table · Pagination · FilterBar · Calendar
 
-## Output Requirements (Every Design Iteration)
-For every iteration you propose (even if small), produce:
-1) A short “Design Proposal” section:
-   - What changed
-   - Why it improves DS
-   - Risks
-2) Concrete repo artifacts:
-   - token changes (`tokens.json`, `tokens.css`)
-   - docs changes
-   - a change note file (see below)
-3) Consumer sync instruction:
-   - “copy tokens.css into app” (or run sync script)
+### Compound elements
+DashboardLayout · DashboardPanel · DashboardSkeleton
+
+All components:
+- use semantic tokens only (no hardcoded colors)
+- have focus rings (`ring-ring`)
+- support light + dark via CSS variables
+- are ARIA-compliant (aria-invalid, aria-sort, role=grid, role=menu, etc.)
 
 ---
 
@@ -139,26 +121,19 @@ Include:
 - Summary
 - Before/After
 - Migration notes (if any)
-- Verification steps (light/dark screenshots are optional but recommended)
+- Verification steps (light/dark screenshots optional but recommended)
 
 ### Canonical docs (maintain over time)
 - `docs/tokens.md` — token dictionary + meaning + examples
 - `docs/components.md` — component inventory + variants + states
+- `docs/compound-elements.md` — compound element specs + Phase 2 roadmap
 - `docs/paper-workflow.md` — how to go Paper → code → tokens reliably
 - `docs/migrations.md` — deprecations and replacements
 
----
-
-## Component Generation Roadmap (Default)
-When in doubt, generate in this order (small steps):
-1) Foundations: tokens + radius + typography scale guidance
-2) Buttons (variants + sizes + focus states)
-3) Inputs (text, textarea, select), validation states
-4) Navigation shell (sidebar/topbar) patterns
-5) Cards + sections + dividers
-6) Tables + filters + pagination
-7) Dialogs + drawers
-8) Toast/alerts + empty/loading states
+### Documentation site
+- Lives at `apps/docs/`; run with `cd apps/docs && npm run dev` (port 3030)
+- 21 static pages covering foundations (color, typography), all component galleries, and token reference
+- Token CSS must be manually copied: `packages/tokens/tokens/tokens.css` → `apps/docs/src/design-system/tokens.css` after any token change
 
 ---
 
@@ -185,16 +160,6 @@ Before you conclude an iteration:
 
 ## Default Working Style (Communication)
 - Be direct, calm, and precise.
-- Make decisions; don’t ask endless questions.
+- Make decisions; don't ask endless questions.
 - When you assume, label assumptions.
 - Prefer shipping a small improvement over discussing indefinitely.
-
----
-
-## Immediate Next Task (Start Here)
-Create initial DS docs scaffolding:
-- `docs/tokens.md`
-- `docs/components.md`
-- `docs/paper-workflow.md`
-- `docs/migrations.md`
-And add the first change note describing current baseline token set.

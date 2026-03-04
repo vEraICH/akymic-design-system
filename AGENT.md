@@ -30,24 +30,15 @@ packages/
 └── ui/
     └── src/
         ├── index.ts             ← Barrel export for all @akymic/ui components
-        ├── badge.tsx            ← Badge (6 variants × 2 sizes)
-        ├── skeleton.tsx         ← Skeleton + Spinner
-        ├── empty-state.tsx      ← EmptyState
-        ├── dashboard-layout.tsx ← DashboardLayout — 12-col CSS Grid container
-        ├── dashboard-panel.tsx  ← DashboardPanel — panel primitive (compound)
-        ├── dashboard-skeleton.tsx ← DashboardSkeleton — loading placeholder
-        ├── checkbox.tsx · radio.tsx · switch.tsx
-        ├── tabs.tsx · breadcrumb.tsx
-        ├── tooltip.tsx · dropdown.tsx
-            ├── button.tsx · input.tsx · textarea.tsx
-        ├── card.tsx · divider.tsx
+        ├── button.tsx · input.tsx · textarea.tsx
+        ├── card.tsx · divider.tsx · badge.tsx
         ├── alert.tsx · toast.tsx · skeleton.tsx · empty-state.tsx
         ├── dialog.tsx · drawer.tsx · popover.tsx
         ├── table.tsx · pagination.tsx · filter-bar.tsx
         ├── select.tsx · combobox.tsx · multi-select.tsx
         ├── date-picker.tsx · file-upload.tsx
         ├── checkbox.tsx · radio.tsx · switch.tsx · tabs.tsx
-        ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx · badge.tsx
+        ├── breadcrumb.tsx · tooltip.tsx · dropdown.tsx
         ├── dashboard-layout.tsx · dashboard-panel.tsx · dashboard-skeleton.tsx
         ├── calendar/          ← Calendar, MiniMonth, MonthGrid, Toolbar, DayCell, EventChip
         ├── hooks/             ← use-focus-trap.ts, use-lock-body-scroll.ts
@@ -129,7 +120,7 @@ Typography tokens are **mode-agnostic** (no light/dark split). They live in `:ro
 
 ## 4. Current Token List
 
-### Color tokens (14 roles, each with light + dark)
+### Color tokens (23 roles, each with light + dark)
 
 | Token | Tailwind classes | Semantic use |
 |---|---|---|
@@ -149,6 +140,10 @@ Typography tokens are **mode-agnostic** (no light/dark split). They live in `:ro
 | `--accent-foreground` | `text-accent-foreground` | Text on accent hover |
 | `--destructive` | `bg-destructive` / `text-destructive` | Errors, delete actions |
 | `--destructive-foreground` | `text-destructive-foreground` | Text on destructive bg |
+| `--success` | `bg-success` / `text-success` | Success states, confirmations |
+| `--success-foreground` | `text-success-foreground` | Text on success bg |
+| `--warning` | `bg-warning` / `text-warning` | Warning states, cautions |
+| `--warning-foreground` | `text-warning-foreground` | Text on warning bg |
 | `--border` | `border-border` | Layout dividers, separators |
 | `--input` | `border-input` | Form field borders |
 | `--ring` | `ring-ring` | Focus rings |
@@ -158,6 +153,16 @@ Typography tokens are **mode-agnostic** (no light/dark split). They live in `:ro
 | Token | CSS var | Value | Use |
 |---|---|---|---|
 | Radius | `--radius` | `0.75rem` | Base border radius |
+
+### Shadow tokens (3 roles, light + dark)
+
+| Token | Tailwind class | Semantic use |
+|---|---|---|
+| `--shadow-resting` | `shadow-resting` | Cards, panels, contained surfaces |
+| `--shadow-floating` | `shadow-floating` | Dialogs, drawers, toasts, popovers |
+| `--shadow-inset` | `shadow-inset` | Pressed states, inset input affordance |
+
+Shadow tokens store full CSS `box-shadow` strings (not HSL components). Both `:root {}` and `.dark {}` define their own values.
 
 ### Typography tokens (19 vars, mode-agnostic)
 
