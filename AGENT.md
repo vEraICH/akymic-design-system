@@ -174,6 +174,27 @@ Shadow tokens store full CSS `box-shadow` strings (not HSL components). Both `:r
 | Letter spacing (4) | `--tracking-tight` `--tracking-normal` `--tracking-wide` `--tracking-widest` |
 | Font family (2) | `--font-sans` `--font-mono` |
 
+### Motion tokens (9 vars, mode-agnostic)
+
+Motion tokens are plain duration (`ms`) and `cubic-bezier()` strings. They live in `:root {}` only — no dark mode variant needed.
+
+| Group | CSS var | Tailwind class | Value |
+|---|---|---|---|
+| Duration — instant | `--duration-instant` | `duration-instant` | `50ms` |
+| Duration — fast | `--duration-fast` | `duration-fast` | `100ms` |
+| Duration — normal | `--duration-normal` | `duration-normal` | `200ms` |
+| Duration — slow | `--duration-slow` | `duration-slow` | `300ms` |
+| Duration — slower | `--duration-slower` | `duration-slower` | `500ms` |
+| Easing — standard | `--ease-standard` | `ease-standard` | `cubic-bezier(0.2, 0, 0, 1)` |
+| Easing — enter | `--ease-enter` | `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` |
+| Easing — exit | `--ease-exit` | `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` |
+| Easing — spring | `--ease-spring` | `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` |
+
+**Default pair:** `duration-normal` + `ease-standard` for most UI transitions.
+**Enter:** `ease-enter`; **Exit:** `ease-exit`; **Playful:** `ease-spring` + `duration-fast`.
+
+`prefers-reduced-motion: reduce` collapses all duration tokens to `0.01ms` — disabling animation without code changes.
+
 ---
 
 ## 5. How to Add a Token
@@ -238,6 +259,7 @@ Copy `packages/tokens/tokens/tokens.css` to `akymic-app-template/src/design-syst
 | Token system | stable | 23 semantic tokens — 18 color roles + radius + success/warning (2026-03-02) |
 | Shadow tokens | stable | `--shadow-resting` / `--shadow-floating` / `--shadow-inset` (2026-03-02) |
 | Typography scale | stable | 19 mode-agnostic vars in `:root` only |
+| Motion tokens | stable | 9 vars — 5 duration + 4 easing; prefers-reduced-motion; 13 components normalized (2026-03-04) |
 
 ### Primitives (in `packages/ui/src/`)
 | Component | Status | Notes |

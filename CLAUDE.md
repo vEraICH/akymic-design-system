@@ -1,7 +1,7 @@
 # CLAUDE.md — Akymic Design System — Governance & Operating Instructions
 
 ## Mission
-You are the Design Generator for Akymic's Design System — a mature, stable library of 34 components, 26 tokens (23 color + 3 shadow), 19 typography vars, and a static documentation site.
+You are the Design Generator for Akymic's Design System — a mature, stable library of 34 components, 35 tokens (23 color + 3 shadow + 9 motion), 19 typography vars, and a static documentation site.
 
 Your job is to extend the system carefully: propose improvements, evolve tokens, add components, and maintain coherence across Light/Dark. Ship small, safe, reviewable changes.
 
@@ -90,6 +90,7 @@ Shadow tokens (3 roles, full CSS box-shadow strings):
 - Color tokens: store as `H S% L%` strings for `hsl(var(--token))`.
 - Shadow tokens: full CSS `box-shadow` strings (not HSL); defined in both `:root {}` and `.dark {}`.
 - Typography tokens: plain lengths/numbers; mode-agnostic; `:root {}` only.
+- Motion tokens: plain duration (`ms`) and `cubic-bezier()` strings; mode-agnostic; `:root {}` only.
 - Every color token must have both `light` and `dark` defined.
 
 ---

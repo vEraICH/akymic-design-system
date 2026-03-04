@@ -275,6 +275,72 @@ Usage: `letter-spacing: var(--tracking-wide)`.
 
 ---
 
+## Motion Tokens
+
+Motion tokens are **mode-agnostic** — they live in `:root {}` only and do not need light/dark variants. Values are plain duration strings (`ms`) and `cubic-bezier()` functions, not HSL components. Use Tailwind's `duration-*` and `ease-*` utilities, which map directly to these token values.
+
+`prefers-reduced-motion: reduce` collapses every duration to `0.01ms`, effectively disabling all transitions system-wide without removing them from the code.
+
+### Duration Tokens
+
+| Token | CSS Variable | Value | Tailwind class | Semantic use |
+|-------|-------------|-------|----------------|--------------|
+| `duration.instant` | `--duration-instant` | `50ms` | `duration-instant` | Icon swaps, toggle ticks, micro-feedback |
+| `duration.fast` | `--duration-fast` | `100ms` | `duration-fast` | Hover states, tooltips appearing, dropdown open |
+| `duration.normal` | `--duration-normal` | `200ms` | `duration-normal` | **Default.** Button presses, panel slides, focus rings |
+| `duration.slow` | `--duration-slow` | `300ms` | `duration-slow` | Modal/drawer enter, page-level transitions |
+| `duration.slower` | `--duration-slower` | `500ms` | `duration-slower` | Complex layout shifts, skeleton-to-content fades |
+
+Usage: `transition-duration: var(--duration-normal)` or Tailwind `duration-normal`.
+
+### Easing Tokens
+
+| Token | CSS Variable | Value | Tailwind class | Semantic use |
+|-------|-------------|-------|----------------|--------------|
+| `ease.standard` | `--ease-standard` | `cubic-bezier(0.2, 0, 0, 1)` | `ease-standard` | **Default.** Most transitions — balanced decel |
+| `ease.enter` | `--ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | `ease-enter` | Elements arriving: modals, toasts, tooltips |
+| `ease.exit` | `--ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | `ease-exit` | Elements leaving: dismiss, close, collapse |
+| `ease.spring` | `--ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | `ease-spring` | Playful overshoot: toggles, checkmarks, drag-drop |
+
+Usage: `transition-timing-function: var(--ease-enter)` or Tailwind `ease-enter`.
+
+### Keyframe Animations
+
+| Tailwind class | CSS animation | Tokens used | Semantic use |
+|---------------|---------------|-------------|--------------|
+| `animate-zoom-in-95` | `zoom-in-95 var(--duration-fast) var(--ease-enter) both` | `--duration-fast`, `--ease-enter` | Popover / dropdown enter |
+| `animate-fade-in` | `fade-in var(--duration-fast) var(--ease-enter) both` | `--duration-fast`, `--ease-enter` | Toast / overlay reveal |
+
+### Accessibility
+
+All motion tokens respect `prefers-reduced-motion`:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0.01ms;
+    --duration-fast:    0.01ms;
+    --duration-normal:  0.01ms;
+    --duration-slow:    0.01ms;
+    --duration-slower:  0.01ms;
+  }
+}
+```
+
+This collapses all durations to effectively instant, so components using these tokens become non-animated without any code changes.
+
+### Motion Do / Don't
+
+| Do | Don't |
+|----|-------|
+| `transition-duration: var(--duration-normal)` | `transition-duration: 200ms` (hard-coded) |
+| Use `ease-enter` for elements arriving | Use the same easing for enter and exit |
+| Use `ease-exit` for elements departing | Use `ease-spring` on data-heavy transitions |
+| Reserve `duration-slower` for full-page transitions | Use `duration-slower` on micro-interactions (toggles, hovers) |
+| Pair `ease-spring` with `duration-instant` or `duration-fast` for snappy feel | Use `ease-spring` with `duration-slow` (too bouncy) |
+
+---
+
 ## Do / Don't
 
 | Do | Don't |

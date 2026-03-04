@@ -16,6 +16,7 @@
 | AKYD-003 | `--muted-foreground` light contrast fix (46.9% → 40% L) | completed | WCAG AA compliance | [2026-02-28-baseline-audit](docs/changes/2026-02-28-baseline-audit.md) |
 | AKYD-004 | `--destructive` dark contrast fix (30.6% → 60.2% L) | completed | Readable as error text on dark bg | [2026-02-28-fix-dark-destructive](docs/changes/2026-02-28-fix-dark-destructive.md) |
 | AKYD-005 | Typography scale — 19 vars (size, weight, leading, tracking, family) | completed | `--text-*`, `--font-*`, `--leading-*`, `--tracking-*` | [2026-02-28-typography-scale](docs/changes/2026-02-28-typography-scale.md) |
+| AKYD-084 | Motion token system — 9 vars (5 duration + 4 easing) + a11y | completed | `--duration-*`, `--ease-*`; prefers-reduced-motion; 13 components normalized | [2026-03-04-motion-system](docs/changes/2026-03-04-motion-system.md) |
 | AKYD-006 | Spacing scale token | not-started | `--space-*` vars mirroring Tailwind scale | — |
 
 ---

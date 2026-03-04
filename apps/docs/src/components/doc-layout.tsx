@@ -15,6 +15,7 @@ const NAV = [
     items: [
       { href: "/foundations/color", label: "Color" },
       { href: "/foundations/typography", label: "Typography" },
+      { href: "/foundations/motion", label: "Motion" },
       { href: "/foundations/spacing", label: "Spacing & Radius" },
     ],
   },
