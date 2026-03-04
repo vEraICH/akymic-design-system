@@ -127,6 +127,11 @@ Include:
 - Migration notes (if any)
 - Verification steps (light/dark screenshots optional but recommended)
 
+### Archived change notes
+- Completed notes (pre-2026-03-05) live in `docs/changes/archive/`.
+- Do **not** read archived notes unless explicitly needed for migration research or audit.
+- New change notes still go in `docs/changes/` (not archive).
+
 ### Canonical docs (maintain over time)
 - `docs/tokens.md` — token dictionary + meaning + examples
 - `docs/components.md` — component inventory + variants + states
